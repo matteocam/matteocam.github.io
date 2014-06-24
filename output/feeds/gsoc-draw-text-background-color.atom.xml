@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>GSoC 2014 - Draw</title><link href="http://matteocam.github.io/" rel="alternate"></link><link href="http://matteocam.github.io/feeds/gsoc-draw-text-background-color.atom.xml" rel="self"></link><id>http://matteocam.github.io/</id><updated>2014-06-22T00:00:00+02:00</updated><entry><title>Adding attribute classes in editeng</title><link href="http://matteocam.github.io/adding-attribute-classes-in-editeng.html" rel="alternate"></link><updated>2014-06-22T00:00:00+02:00</updated><author><name>Matteo Campanelli</name></author><id>tag:matteocam.github.io,2014-06-22:adding-attribute-classes-in-editeng.html</id><summary type="html">&lt;h1&gt;Adding Character Attributes&lt;/h1&gt;
+&lt;p&gt;In this post I will introduce Edit Engine Attributes and how to extend
+LO with new classes for them.&lt;/p&gt;
+&lt;h2&gt;What are attributes?&lt;/h2&gt;
+&lt;p&gt;Loosely, attributes are properties of text, at times referring to large
+portions of text (e.g. paragraphs), or others referring to
+properties of specific characters. Whether the text is underline or what
+the font color being used are example of attributes of this second kind.
+Text background color -  our working example - is also in this categotory.&lt;/p&gt;
+&lt;h2&gt;What do attributes do again (how are they handled?)&lt;/h2&gt;
+&lt;p&gt;[I might skip this section and give a "operational" feeling of this by
+means of classes and stuff]&lt;/p&gt;
+&lt;h2&gt;Identifiers&lt;/h2&gt;
+&lt;p&gt;EE_CHAR*&lt;/p&gt;
+&lt;h2&gt;Basic classes&lt;/h2&gt;</summary></entry><entry><title>How to add text background color in Draw.</title><link href="http://matteocam.github.io/how-to-add-text-background-color-in-draw.html" rel="alternate"></link><updated>2014-06-22T00:00:00+02:00</updated><author><name>Matteo Campanelli</name></author><id>tag:matteocam.github.io,2014-06-22:how-to-add-text-background-color-in-draw.html</id><summary type="html">&lt;p&gt;Contents:
+&lt;em&gt; Link 1
+&lt;/em&gt; Link 2&lt;/p&gt;</summary></entry><entry><title>Text Background Color in Draw. Introduction.</title><link href="http://matteocam.github.io/text-background-color-in-draw-introduction.html" rel="alternate"></link><updated>2014-06-22T00:00:00+02:00</updated><author><name>Matteo Campanelli</name></author><id>tag:matteocam.github.io,2014-06-22:text-background-color-in-draw-introduction.html</id><summary type="html">&lt;p&gt;[TODO: use emph font for modules, methods, objects]
+[TODO: link names to LO documentation or OpenGrok]&lt;/p&gt;
+&lt;p&gt;[TODO: it should present a more global discussion of what is needed to
+do: load/save, UNO API, document model...]&lt;/p&gt;
+&lt;p&gt;In this series of blog posts I will describe how to add font attribute
+features to LO Draw, looking on text background color as a working
+example.
+In this post I will introduce the problem and outline the structure of
+the changes in the source code.&lt;/p&gt;
+&lt;h2&gt;The problem&lt;/h2&gt;
+&lt;p&gt;Currently, LO Draw is not able to assign an arbitrary background
+to arbitrary text portions. &lt;/p&gt;
+&lt;p&gt;[more introductory stuff]&lt;/p&gt;
+&lt;p&gt;What kind of capabilities does LO Draw need in order for that?
+- an attribute in editengine as well as its connection to UNO API;
+- the actual drawing procedures called from this attribute.&lt;/p&gt;
+&lt;h2&gt;~An overview of Draw Architecture ~&lt;/h2&gt;
+&lt;p&gt;Who deals with all the drawing process?
+An important starting point for attributes of text in ImplEditEngine in
+the editengine module. Some of the responsibilities of this class that
+mostly concern us are: dividing the text in portions having different attributes, passing information
+about these attributes to drawing modules (i.e. vcl and drawinglayer).&lt;/p&gt;
+&lt;p&gt;A note: for sake of clarity, the following descriptions of classes
+responsibilities may be quite simplifying at times. However, please feel
+free to contact me if you think there are some significant errors; I
+will be happy to fix them.&lt;/p&gt;
+&lt;p&gt;An attribute is some kind of information about the characters in a text
+(information at other levels, e.g. the paragraph, is also handled in the
+same way, here we will focus on character attributes).&lt;/p&gt;
+&lt;p&gt;[XXX: Describe difference between edit and non-edit mode]&lt;/p&gt;
+&lt;p&gt;Rougly, painting of text happens in the following way:
+[XXX: check this info]
+[In Edit Mode]&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;The method ImplEditEngine::Paint [XXX: which one?] takes care of drawing
+each portion of text. For each of these portions, its attributes are
+passed to an object of the class OutputDevice and then its text drawing methods are
+called ( indirectly from Font method QuickDrawText ). 
+[How about Fonts in all this? Think of describing them too]&lt;/p&gt;
+&lt;h2&gt;[In non-edit mode]&lt;/h2&gt;
+&lt;p&gt;Here information on attributes is passed to the drawinglayer module andp
+drawing occurs by means of callback.
+[XXX: put this in some other post?]
+Information is encapsulated in... [complex structure. This structure had
+no information on Fill Color]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;What is editengine?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;What is an attribute?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;[Describe loosely the modules, some important classes and the connection
+between them. Put these descriptions under the categories of drawing and
+attribute]&lt;/p&gt;</summary></entry></feed>
