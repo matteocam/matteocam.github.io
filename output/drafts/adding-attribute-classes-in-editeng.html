@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Adding attribute classes in editeng</title>
+        <link rel="stylesheet" href="https://matteocam.github.io/output/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://matteocam.github.io/output/">GSoC 2014 - Hacking Draw </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="https://matteocam.github.io/output/category/gsoc-draw-text-background-color.html">gsoc-draw-text-background-color</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://matteocam.github.io/output/adding-attribute-classes-in-editeng.html" rel="bookmark"
+           title="Permalink to Adding attribute classes in editeng">Adding attribute classes in editeng</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-06-22T00:00:00">
+                Sun 22 June 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="https://matteocam.github.io/output/author/matteo-campanelli.html">Matteo Campanelli</a>
+        </address>
+<p>In <a href="https://matteocam.github.io/output/category/gsoc-draw-text-background-color.html">gsoc-draw-text-background-color</a>. </p>
+
+</footer><!-- /.post-info -->      <p>In this post I will introduce Edit Engine Attributes and how to extend
+LO with new classes for them.</p>
+<h1>What are attributes?</h1>
+<p>Loosely, attributes are properties of text. At times we refer with this term to large
+portions of text (e.g. paragraphs), or others referring to
+properties of specific characters. Whether the text is underline or what
+the font color being used are example of attributes of this second kind.
+Text background color -  our working example - is also in this categotory.</p>
+<h2>What do attributes do again (how are they handled?)</h2>
+<p>[I might skip this section and give a "operational" feeling of this by
+means of classes and stuff]</p>
+<h1>Some basic classes and identifiers</h1>
+<p>The basic classes involved here are:</p>
+<ul>
+<li><code>class EditCharAttribFoo</code>: this class is responsible for the changes of the <em>Foo</em> attribute on the text;</li>
+<li><code>class SvxFooItem</code>: this class represents the actual <em>Foo</em> attribute.</li>
+</ul>
+<p>[TODO: insert link to docs.libreoffice]</p>
+<p>We will now see how to add new classes of this type considering background color, so we will see how to extend <em>editeng</em> with 
+<strong>EditCharAttribBackgroundColor</strong> and <strong>SvxBackgroundColorItem</strong>.</p>
+<h2>Class EditCharAttribBackgroundColor</h2>
+<p>In the header <a href="http://opengrok.libreoffice.org/xref/core/editeng/source/editeng/editattr.hxx">editattr.hxx</a> we add:</p>
+<div class="highlight"><pre><span class="c1">// class EditCharAttribBackgroundColor</span>
+
+<span class="k">class</span> <span class="n">EditCharAttribBackgroundColor</span> <span class="o">:</span> <span class="n">public</span> <span class="n">EditCharAttrib</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">EditCharAttribBackgroundColor</span><span class="p">(</span><span class="k">const</span> <span class="n">SvxBackgroundColorItem</span><span class="o">&amp;</span> <span class="n">rAttr</span><span class="p">,</span>
+                                  <span class="n">sal_uInt16</span> <span class="n">nStart</span><span class="p">,</span>
+                                  <span class="n">sal_uInt16</span> <span class="n">nEnd</span> <span class="p">);</span>
+    <span class="k">virtual</span> <span class="k">void</span>    <span class="n">SetFont</span><span class="p">(</span><span class="n">SvxFont</span><span class="o">&amp;</span> <span class="n">rFont</span><span class="p">,</span> <span class="n">OutputDevice</span><span class="o">*</span> <span class="n">pOutDev</span><span class="p">)</span> <span class="no">SAL_OVERRIDE</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>The class definition above is very simple: it includes a constructor and the method <em>SetFont</em> whose role we'll see briefly.
+The string <code>SAL_OVERRIDE</code> is <a href="http://lists.freedesktop.org/archives/libreoffice/2013-January/045097.html">automatically translated to</a>
+C++11's <code>override</code>.</p>
+<p>The constructor has no particular responsibility and simply passes its parameters to the parent contstructor:</p>
+<div class="highlight"><pre><span class="n">EditCharAttribBackgroundColor</span><span class="o">::</span><span class="n">EditCharAttribBackgroundColor</span><span class="p">(</span>
+                                <span class="k">const</span> <span class="n">SvxBackgroundColorItem</span><span class="o">&amp;</span> <span class="n">rAttr</span><span class="p">,</span>
+                                  <span class="n">sal_uInt16</span> <span class="n">_nStart</span><span class="p">,</span>
+                                  <span class="n">sal_uInt16</span> <span class="n">_nEnd</span> <span class="p">)</span>
+    <span class="o">:</span> <span class="n">EditCharAttrib</span><span class="p">(</span> <span class="n">rAttr</span><span class="p">,</span> <span class="n">_nStart</span><span class="p">,</span> <span class="n">_nEnd</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">DBG_ASSERT</span><span class="p">(</span> <span class="n">rAttr</span><span class="p">.</span><span class="n">Which</span><span class="p">()</span> <span class="o">==</span> <span class="n">EE_CHAR_BKGCOLOR</span><span class="p">,</span> <span class="s">&quot;Not a BackColor attribute!&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The constant <code>EE_CHAR_BKGCOLOR</code>  is a value that identifies SfxPoolItem of subtype SvxBackgroundColorItem (similarly, <code>EE_CHAR_UNDERLINE</code> is used to
+identify SvxUnderlineItem and so on...).</p>
+<p>We will now see the method <em>SetFont</em>. This is responsible for integrating the information in the item <code>rAttr</code> (passed in the constructor) into two objects:</p>
+<ul>
+<li>
+<p><code>SvxFont &amp;rFont</code>. Objects of type <code>SvxFont</code> represent basic information about fonts (underlining style, line color, is it bold?, etc.). For more details see
+ <a href="http://opengrok.libreoffice.org/xref/core/include/vcl/font.hxx">font.hxx</a> and <a href="http://opengrok.libreoffice.org/xref/core/include/editeng/svxfont.hxx">svxfont.hxx</a>.</p>
+</li>
+<li>
+<p><code>OutputDevice* pOutDev</code>. The class <a href="http://docs.libreoffice.org/vcl/html/classOutputDevice.html">OutputDevice</a> is an abstraction that does basic rendering.</p>
+</li>
+</ul>
+<p>Our implementation of <code>SetFont</code> will have to set the text fill color in <code>rFont</code> and  non-transparent (<code>OutputDevice</code> checks this 
+property before rendering an arbitrary text fill color). The code:</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="n">EditCharAttribBackgroundColor</span><span class="o">::</span><span class="n">SetFont</span><span class="p">(</span> <span class="n">SvxFont</span><span class="o">&amp;</span> <span class="n">rFont</span><span class="p">,</span> <span class="n">OutputDevice</span><span class="o">*</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Color</span> <span class="n">aColor</span> <span class="o">=</span> <span class="p">((</span><span class="k">const</span> <span class="n">SvxBackgroundColorItem</span><span class="o">*</span><span class="p">)</span><span class="n">GetItem</span><span class="p">())</span><span class="o">-&gt;</span><span class="n">GetValue</span><span class="p">();</span>
+    <span class="n">rFont</span><span class="p">.</span><span class="n">SetFillColor</span><span class="p">(</span> <span class="n">aColor</span><span class="p">);</span>
+    <span class="n">rFont</span><span class="p">.</span><span class="n">SetTransparent</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>class SvxBackgroundColorItem</h2>
+<p>XXX: Which files are they in?</p>
+<p>The class <code>SvxBackgroundColorItem</code> contains information about the attribute we are attaching to fonts.
+In our case this information is the text fill color. Our class should be a descendent of <code>SfxPoolItem</code>.</p>
+<p>The classe SvxColorItem (used for text line color) is an ideal parent class since it contains already significant
+portions of related code. Both classes, after all, have to carry information on colors.</p>
+<p>Our class definition is contained in <a href="http://opengrok.libreoffice.org/xref/core/include/editeng/colritem.hxx">colritem.hxx</a> and looks as follows:</p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">EDITENG_DLLPUBLIC</span> <span class="n">SvxBackgroundColorItem</span> <span class="o">:</span> <span class="n">public</span> <span class="n">SvxColorItem</span>
+<span class="p">{</span>
+    <span class="nl">public:</span>
+        <span class="n">TYPEINFO_OVERRIDE</span><span class="p">();</span>
+
+        <span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="k">const</span> <span class="n">sal_uInt16</span> <span class="n">nId</span> <span class="p">);</span>
+        <span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="k">const</span> <span class="n">Color</span><span class="o">&amp;</span> <span class="n">rCol</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="n">sal_uInt16</span> <span class="n">nId</span> <span class="p">);</span>
+        <span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="n">SvStream</span><span class="o">&amp;</span> <span class="n">rStrm</span><span class="p">,</span> <span class="k">const</span> <span class="n">sal_uInt16</span> <span class="n">nId</span>  <span class="p">);</span>
+        <span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="k">const</span> <span class="n">SvxBackgroundColorItem</span><span class="o">&amp;</span> <span class="n">rCopy</span> <span class="p">);</span>
+
+        <span class="n">virtual</span> <span class="n">SfxPoolItem</span><span class="o">*</span>     <span class="n">Clone</span><span class="p">(</span> <span class="n">SfxItemPool</span> <span class="o">*</span><span class="n">pPool</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span> <span class="k">const</span> <span class="n">SAL_OVERRIDE</span><span class="p">;</span>
+        <span class="n">virtual</span> <span class="n">SfxPoolItem</span><span class="o">*</span>     <span class="n">Create</span><span class="p">(</span><span class="n">SvStream</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">sal_uInt16</span><span class="p">)</span> <span class="k">const</span> <span class="n">SAL_OVERRIDE</span><span class="p">;</span>
+
+<span class="p">};</span>
+</pre></div>
+
+
+<p>The implementation that follows is very simple, all we need to do is to specifiy the contructors and the
+two methods <code>Clone</code> and <code>Create</code>.
+Notice that <code>SvxBackgroundColorItem</code> is not a direct derivate class of <code>SfxPoolItem</code>.
+As a consequence, since we are not adding any member field, <code>SvxColorItem</code> has 
+already taken care of most of the other methods.</p>
+<div class="highlight"><pre><span class="n">SvxBackgroundColorItem</span><span class="o">::</span><span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="k">const</span> <span class="n">sal_uInt16</span> <span class="n">nId</span> <span class="p">)</span> <span class="o">:</span>
+    <span class="n">SvxColorItem</span><span class="p">(</span> <span class="n">nId</span> <span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+
+
+<span class="n">SvxBackgroundColorItem</span><span class="o">::</span><span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="k">const</span> <span class="n">Color</span><span class="o">&amp;</span> <span class="n">rCol</span><span class="p">,</span>
+                                                <span class="k">const</span> <span class="n">sal_uInt16</span> <span class="n">nId</span> <span class="p">)</span> <span class="o">:</span>
+    <span class="n">SvxColorItem</span><span class="p">(</span> <span class="n">rCol</span><span class="p">,</span> <span class="n">nId</span> <span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">SvxBackgroundColorItem</span><span class="o">::</span> <span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="n">SvStream</span><span class="o">&amp;</span> <span class="n">rStrm</span><span class="p">,</span> <span class="k">const</span> <span class="n">sal_uInt16</span> <span class="n">Id</span>  <span class="p">)</span> <span class="o">:</span>
+    <span class="n">SvxColorItem</span><span class="p">(</span> <span class="n">rStrm</span><span class="p">,</span> <span class="n">Id</span> <span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">SvxBackgroundColorItem</span><span class="o">::</span><span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="k">const</span> <span class="n">SvxBackgroundColorItem</span><span class="o">&amp;</span> <span class="n">rCopy</span> <span class="p">)</span> <span class="o">:</span>
+    <span class="n">SvxColorItem</span><span class="p">(</span> <span class="n">rCopy</span> <span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">SfxPoolItem</span><span class="o">*</span> <span class="n">SvxBackgroundColorItem</span><span class="o">::</span><span class="n">Clone</span><span class="p">(</span> <span class="n">SfxItemPool</span> <span class="o">*</span> <span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="o">*</span><span class="n">this</span> <span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="n">SfxPoolItem</span><span class="o">*</span> <span class="n">SvxBackgroundColorItem</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">SvStream</span><span class="o">&amp;</span> <span class="n">rStrm</span><span class="p">,</span> <span class="n">sal_uInt16</span> <span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">SvxBackgroundColorItem</span><span class="p">(</span> <span class="n">rStrm</span><span class="p">,</span> <span class="n">Which</span><span class="p">()</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Before we see how to add any of these classes </p>
+<p>Another important identifier is <code>EE_CHAR_FOO</code> defined in <a href="http://opengrok.libreoffice.org/xref/core/include/editeng/eeitem.hxx"><em>include/editeng/eeitem.hxx</em></a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

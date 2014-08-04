@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>GSoC 2014 - Draw - gsoc-draw-text-background-color</title>
+        <title>GSoC 2014 - Hacking Draw - gsoc-draw-text-background-color</title>
         <link rel="stylesheet" href="https://matteocam.github.io/output/theme/css/main.css" />
 
         <!--[if IE]>
@@ -12,7 +12,7 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://matteocam.github.io/output/">GSoC 2014 - Draw </a></h1>
+                <h1><a href="https://matteocam.github.io/output/">GSoC 2014 - Hacking Draw </a></h1>
                 <nav><ul>
                     <li class="active"><a href="https://matteocam.github.io/output/category/gsoc-draw-text-background-color.html">gsoc-draw-text-background-color</a></li>
                 </ul></nav>
@@ -20,10 +20,10 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://matteocam.github.io/output/adding-attribute-classes-in-editeng.html">Adding attribute classes in editeng</a></h1>
+                    <h1 class="entry-title"><a href="https://matteocam.github.io/output/announcing-text-background-color-in-draw.html">Announcing Text Background Color in Draw.</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2014-06-22T00:00:00">
-                Sun 22 June 2014
+        <abbr class="published" title="2014-08-01T00:00:00">
+                Fri 01 August 2014
         </abbr>
 
         <address class="vcard author">
@@ -31,101 +31,19 @@
         </address>
 <p>In <a href="https://matteocam.github.io/output/category/gsoc-draw-text-background-color.html">gsoc-draw-text-background-color</a>. </p>
 
-</footer><!-- /.post-info --><p>In this post I will introduce Edit Engine Attributes and how to extend
-LO with new classes for them.</p>
-<h1>What are attributes?</h1>
-<p>Loosely, attributes are properties of text. At times we refer with this term to large
-portions of text (e.g. paragraphs), or others referring to
-properties of specific characters. Whether the text is underline or what
-the font color being used are example of attributes of this second kind.
-Text background color -  our working example - is also in this categotory.</p>
-<h2>What do attributes do again (how are they handled?)</h2>
-<p>[I might skip this section and give a "operational" feeling of this by
-means of classes and stuff]</p>
-<h1>Some basic classes and identifiers</h1>
-<p>The basic classes involved here are:</p>
-<ul>
-<li><code>class EditCharAttribFoo</code>: this class is responsible for the changes of the <em>Foo</em> attribute on the text;</li>
-<li><code>class SvxFooItem</code>: this class represents the actual <em>Foo</em> attribute.</li>
-</ul>
-<p>[TODO: insert link to docs.libreoffice]</p>
-<p>We will now see how to add new classes of this type considering background color.</p>
-<h2>Class EditCharAttribBackgroundColor</h2>
-<p>In the header <a href="http://opengrok.libreoffice.org/xref/core/editeng/source/editeng/editattr.hxx">editattr.hxx</a> we add:</p>
-<div class="highlight"><pre><span class="c1">// class EditCharAttribBackgroundColor</span>
-
-<span class="k">class</span> <span class="n">EditCharAttribBackgroundColor</span> <span class="o">:</span> <span class="n">public</span> <span class="n">EditCharAttrib</span>
-<span class="p">{</span>
-<span class="nl">public:</span>
-    <span class="n">EditCharAttribBackgroundColor</span><span class="p">(</span><span class="k">const</span> <span class="n">SvxBackgroundColorItem</span><span class="o">&amp;</span> <span class="n">rAttr</span><span class="p">,</span>
-                                  <span class="n">sal_uInt16</span> <span class="n">nStart</span><span class="p">,</span>
-                                  <span class="n">sal_uInt16</span> <span class="n">nEnd</span> <span class="p">);</span>
-    <span class="k">virtual</span> <span class="k">void</span>    <span class="n">SetFont</span><span class="p">(</span><span class="n">SvxFont</span><span class="o">&amp;</span> <span class="n">rFont</span><span class="p">,</span> <span class="n">OutputDevice</span><span class="o">*</span> <span class="n">pOutDev</span><span class="p">)</span> <span class="no">SAL_OVERRIDE</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-
-
-<p>Before we see how to add any of these classes </p>
-<p>Another important identifier is <code>EE_CHAR_FOO</code> defined in <a href="http://opengrok.libreoffice.org/xref/core/include/editeng/eeitem.hxx"><em>include/editeng/eeitem.hxx</em></a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://matteocam.github.io/output/how-to-add-text-background-color-in-draw.html" rel="bookmark"
-                           title="Permalink to How to add text background color in Draw.">How to add text background color in Draw.</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-06-22T00:00:00">
-                Sun 22 June 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="https://matteocam.github.io/output/author/matteo-campanelli.html">Matteo Campanelli</a>
-        </address>
-<p>In <a href="https://matteocam.github.io/output/category/gsoc-draw-text-background-color.html">gsoc-draw-text-background-color</a>. </p>
-
-</footer><!-- /.post-info -->                <p>Contents:
-<em> <a href="https://matteocam.github.io/output/how-to-add-text-background-color-in-draw.html">Intro</a>
-</em> <a href="https://matteocam.github.io/output/how-to-add-text-background-color-in-draw.html">Adding attributes to editengine</a></p>
-                <a class="readmore" href="https://matteocam.github.io/output/how-to-add-text-background-color-in-draw.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://matteocam.github.io/output/text-background-color-in-draw-introduction.html" rel="bookmark"
-                           title="Permalink to Text Background Color in Draw. Introduction.">Text Background Color in Draw. Introduction.</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-06-22T00:00:00">
-                Sun 22 June 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="https://matteocam.github.io/output/author/matteo-campanelli.html">Matteo Campanelli</a>
-        </address>
-<p>In <a href="https://matteocam.github.io/output/category/gsoc-draw-text-background-color.html">gsoc-draw-text-background-color</a>. </p>
-
-</footer><!-- /.post-info -->                <p>[TODO: use emph font for modules, methods, objects]
-[TODO: link names to LO documentation or OpenGrok]</p>
-<p>[TODO: it should present a more global discussion of what is needed to
-do: load/save, UNO API, document model...]</p>
-<p>In this series of blog posts I will describe how to add font attribute ...</p>
-                <a class="readmore" href="https://matteocam.github.io/output/text-background-color-in-draw-introduction.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
+</footer><!-- /.post-info --><p>For the fist part of my participation to Google Summer of Code 2014 I worked on a simple feature of text in Draw:
+enabling color of text background.
+Now arbitrary portions of text in boxes and captions can have non-transparent colored backgrounds:</p>
+<p><img alt="Text Background Color in Draw" src="../images/example-tbc.png" /></p>
+<p>The resulting changes have been incorporated in <em>master</em>.
+Despite this feature still has to be integrated with the UI of Draw, the program is currently able
+to read background colors from the document source by the <code>fo:background-color</code> attribute.</p>
+<p>Right now it supports only solid backgrounds, partially transparent colors might be a future enhancement.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
         </section><!-- /#extras -->
