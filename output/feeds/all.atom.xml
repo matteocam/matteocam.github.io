@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>GSoC 2014 - Hacking Draw</title><link href="https://matteocam.github.io/output/" rel="alternate"></link><link href="https://matteocam.github.io/output/feeds/all.atom.xml" rel="self"></link><id>https://matteocam.github.io/output/</id><updated>2014-08-01T00:00:00+02:00</updated><entry><title>Announcing Text Background Color in Draw.</title><link href="https://matteocam.github.io/output/announcing-text-background-color-in-draw.html" rel="alternate"></link><updated>2014-08-01T00:00:00+02:00</updated><author><name>Matteo Campanelli</name></author><id>tag:https://matteocam.github.io/output,2014-08-01:announcing-text-background-color-in-draw.html</id><summary type="html">&lt;p&gt;For the fist part of my participation to Google Summer of Code 2014 I worked on a simple feature of text in Draw:
+enabling color of text background.
+Now arbitrary portions of text in boxes and captions can have non-transparent colored backgrounds:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Text Background Color in Draw" src="https://matteocam.github.io/output/images/example-tbc.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The resulting changes have been incorporated in &lt;em&gt;master&lt;/em&gt;.
+Despite this feature still has to be integrated with the UI of Draw, the program is currently able
+to read background colors from the document source by the &lt;code&gt;fo:background-color&lt;/code&gt; attribute.&lt;/p&gt;
+&lt;p&gt;Right now it supports only solid backgrounds, partially transparent colors might be a future enhancement.&lt;/p&gt;</summary></entry></feed>
