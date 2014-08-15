@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>GSoC 2014 - Hacking Draw</title><link href="https://matteocam.github.io/output/" rel="alternate"></link><link href="https://matteocam.github.io/output/feeds/all.atom.xml" rel="self"></link><id>https://matteocam.github.io/output/</id><updated>2014-08-01T00:00:00+02:00</updated><entry><title>Announcing Text Background Color in Draw.</title><link href="https://matteocam.github.io/output/announcing-text-background-color-in-draw.html" rel="alternate"></link><updated>2014-08-01T00:00:00+02:00</updated><author><name>Matteo Campanelli</name></author><id>tag:https://matteocam.github.io/output,2014-08-01:announcing-text-background-color-in-draw.html</id><summary type="html">&lt;p&gt;For the fist part of my participation to Google Summer of Code 2014 I worked on a simple feature of text in Draw:
+<feed xmlns="http://www.w3.org/2005/Atom"><title>GSoC 2014 - Hacking Draw</title><link href="https://matteocam.github.io/output/" rel="alternate"></link><link href="https://matteocam.github.io/output/feeds/all.atom.xml" rel="self"></link><id>https://matteocam.github.io/output/</id><updated>2014-08-15T00:00:00+02:00</updated><entry><title>Announcing chained text in Draw - a prototype implementation</title><link href="https://matteocam.github.io/output/announcing-chained-text-in-draw-a-prototype-implementation.html" rel="alternate"></link><updated>2014-08-15T00:00:00+02:00</updated><author><name>Matteo Campanelli</name></author><id>tag:https://matteocam.github.io/output,2014-08-15:announcing-chained-text-in-draw-a-prototype-implementation.html</id><summary type="html">&lt;p&gt;During the second part of my participation to Google Summer of Code 2014 I tried to enable
+boxes to have their content chained to one another in case of overflow.
+In other words, text that cannot fit in one box can "overflow" in the next link in a logical chain.&lt;/p&gt;
+&lt;p&gt;The images below, for example, show 3 text boxes where each one is linked to the one on its right.
+The two images show respectively the program before and after chaining.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Overflowing text before chaining" src="https://matteocam.github.io/output/images/Before_chaining.png" /&gt;
+&lt;img alt="Overflowing text after chaining" src="https://matteocam.github.io/output/images/After_chaining.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The current implementation is not perfect though:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It is able to break and move whole overflowing paragraphs (but portions should be enabled for the future);&lt;/li&gt;
+&lt;li&gt;It does not work if the first paragraph is the one to overflow;&lt;/li&gt;
+&lt;li&gt;It has some issues when the result of chaining has to recursively overflow in a next box;&lt;/li&gt;
+&lt;li&gt;Editing the first box should show the whole text as if it had not been chained. This is not the case yet.&lt;/li&gt;
+&lt;/ul&gt;</summary></entry><entry><title>Announcing Text Background Color in Draw.</title><link href="https://matteocam.github.io/output/announcing-text-background-color-in-draw.html" rel="alternate"></link><updated>2014-08-01T00:00:00+02:00</updated><author><name>Matteo Campanelli</name></author><id>tag:https://matteocam.github.io/output,2014-08-01:announcing-text-background-color-in-draw.html</id><summary type="html">&lt;p&gt;For the fist part of my participation to Google Summer of Code 2014 I worked on a simple feature of text in Draw:
 enabling color of text background.
 Now arbitrary portions of text in boxes and captions can have non-transparent colored backgrounds:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Text Background Color in Draw" src="https://matteocam.github.io/output/images/example-tbc.png" /&gt;&lt;/p&gt;

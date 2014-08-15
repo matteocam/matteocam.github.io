@@ -15,13 +15,51 @@
         <header id="banner" class="body">
                 <h1><a href="https://matteocam.github.io/output/">GSoC 2014 - Hacking Draw </a></h1>
                 <nav><ul>
+                    <li><a href="https://matteocam.github.io/output/category/gsoc-draw-chained-text-boxes.html">gsoc-draw-chained-text-boxes</a></li>
                     <li><a href="https://matteocam.github.io/output/category/gsoc-draw-text-background-color.html">gsoc-draw-text-background-color</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://matteocam.github.io/output/announcing-text-background-color-in-draw.html">Announcing Text Background Color in Draw.</a></h1>
+                    <h1 class="entry-title"><a href="https://matteocam.github.io/output/announcing-chained-text-in-draw-a-prototype-implementation.html">Announcing chained text in Draw - a prototype implementation</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-08-15T00:00:00">
+                Fri 15 August 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="https://matteocam.github.io/output/author/matteo-campanelli.html">Matteo Campanelli</a>
+        </address>
+<p>In <a href="https://matteocam.github.io/output/category/gsoc-draw-chained-text-boxes.html">gsoc-draw-chained-text-boxes</a>. </p>
+
+</footer><!-- /.post-info --><p>During the second part of my participation to Google Summer of Code 2014 I tried to enable
+boxes to have their content chained to one another in case of overflow.
+In other words, text that cannot fit in one box can "overflow" in the next link in a logical chain.</p>
+<p>The images below, for example, show 3 text boxes where each one is linked to the one on its right.
+The two images show respectively the program before and after chaining.</p>
+<p><img alt="Overflowing text before chaining" src="https://matteocam.github.io/output/images/Before_chaining.png" />
+<img alt="Overflowing text after chaining" src="https://matteocam.github.io/output/images/After_chaining.png" /></p>
+<p>The current implementation is not perfect though:</p>
+<ul>
+<li>It is able to break and move whole overflowing paragraphs (but portions should be enabled for the future);</li>
+<li>It does not work if the first paragraph is the one to overflow;</li>
+<li>It has some issues when the result of chaining has to recursively overflow in a next box;</li>
+<li>Editing the first box should show the whole text as if it had not been chained. This is not the case yet.</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://matteocam.github.io/output/announcing-text-background-color-in-draw.html" rel="bookmark"
+                           title="Permalink to Announcing Text Background Color in Draw.">Announcing Text Background Color in Draw.</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-08-01T00:00:00">
                 Fri 01 August 2014
@@ -32,19 +70,18 @@
         </address>
 <p>In <a href="https://matteocam.github.io/output/category/gsoc-draw-text-background-color.html">gsoc-draw-text-background-color</a>. </p>
 
-</footer><!-- /.post-info --><p>For the fist part of my participation to Google Summer of Code 2014 I worked on a simple feature of text in Draw:
+</footer><!-- /.post-info -->                <p>For the fist part of my participation to Google Summer of Code 2014 I worked on a simple feature of text in Draw:
 enabling color of text background.
 Now arbitrary portions of text in boxes and captions can have non-transparent colored backgrounds:</p>
 <p><img alt="Text Background Color in Draw" src="https://matteocam.github.io/output/images/example-tbc.png" /></p>
-<p>The resulting changes have been incorporated in <em>master</em>.
-Despite this feature still has to be integrated with the UI of Draw, the program is currently able
-to read background colors from the document source by the <code>fo:background-color</code> attribute.</p>
-<p>Right now it supports only solid backgrounds, partially transparent colors might be a future enhancement.</p>                </article>
+<p>The resulting changes have been incorporated in <em>master ...</em></p>
+                <a class="readmore" href="https://matteocam.github.io/output/announcing-text-background-color-in-draw.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">
