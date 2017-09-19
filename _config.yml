@@ -1,2 +1,6 @@
 theme: jekyll-theme-minimal
 title: Matteo Campanelli
+
+timezone: America/New_York
+
+google_analytics: UA-106770211-1

@@ -1,0 +1,1 @@
+- Campanelli, Matteo and Gennaro, Rosario and Goldfeder, Steven and Nizzardo, Luca *Zero-knowledge contingent payments revisited: Attacks and payments for services* (2017), Commun. ACM   [bib](bib/campanelli_zero-knowledge_2017.bib)
