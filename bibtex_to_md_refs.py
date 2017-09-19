@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# Credit to Valerio Basile
+
 import bibtexparser
 from bibtexparser.bwriter import BibTexWriter
 from bibtexparser.bibdatabase import BibDatabase
@@ -13,7 +15,7 @@ with open('_includes/publications.md', 'w') as md_file:
     for bib_item in bib_database.entries:
         if 'booktitle' in bib_item:
             venue = u', {}'.format(bib_item['booktitle']).replace('{','').replace('}','')
-        elif bib_item['journal']:
+        elif 'booktitle' in bib_item:
             venue = u', {}'.format(bib_item['journal'])
         else:
             venue = u''
