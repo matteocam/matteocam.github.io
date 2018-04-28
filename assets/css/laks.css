@@ -1,1 +1,24 @@
+@font-face {
+	font-family: CalendasPlus;
+	src: url("/assets/fonts/Calendas_Plus.otf") format("opentype");
+}
+
 img[alt=laks] { width: 500px; }
+
+#popup {
+	//visibility: hidden;
+
+	border: 4px solid #2196F3;
+	padding:11px;
+
+  position:relative;
+  margin-top:-45%;
+ 
+  color:black;
+  background-color:#FEF8F8;
+  
+  display: none;
+
+  font-family: CalendasPlus,Times New Roman,serif;
+	font-size: 28px;
+}
