@@ -13,12 +13,15 @@ timeoutId = null;
 function hideBox()
 {
 	timeoutId = null;
-	msgBox.css("display", "none");
+	//msgBox.css("display", "none");
+	msgBox.css("visibility", "hidden");
 }
 
 function showBox()
 {
-	msgBox.css("display", "inline-block");
+	//msgBox.css("display", "inline-block");
+		msgBox.css("visibility", "visible");
+
 }
 
 function roll()

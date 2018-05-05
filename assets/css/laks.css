@@ -6,18 +6,20 @@
 img[alt=laks] { width: 500px; }
 
 #popup {
-	//visibility: hidden;
+	visibility: hidden;
 
 	border: 4px solid #2196F3;
 	padding:11px;
 
   position:relative;
-  margin-top:-45%;
+  margin-top: -850px;
+  left: -386px;
+  width: 250px;
  
   color:black;
   background-color:#FEF8F8;
   
-  display: none;
+  display: inline-block;
 
   font-family: CalendasPlus,Times New Roman,serif;
 	font-size: 28px;
