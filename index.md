@@ -4,7 +4,6 @@ author_profile: true
 classes: wide
 ---
 
-Binary whales _might_ not exist. In constrast, I hold the belief that I do.
 
 I'm a post-doctoral researcher at the [IMDEA Software Institute](https://software.imdea.org/index.html), currently working with
 [Dario Fiore](http://www.dariofiore.it/) on cryptographic protocols for verifiable computation.
