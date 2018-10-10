@@ -105,7 +105,7 @@ analytics:
 author:
   name             : "Matteo Campanelli"
   avatar           : "/assets/images/hyphae.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Cryptography Researcher; Programming Enthusiast"
+  bio              : "Cryptography Researcher; </br> Programming Enthusiast"
   location         : "Madrid, Spain"
   email            :
   links:
