@@ -1,5 +1,6 @@
 ---
-layout: archive
+title: "Matteo Campanelli's Home Page"
+layout: archivehome
 author_profile: true
 /* classes: wide */
 ---

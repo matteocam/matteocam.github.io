@@ -17,9 +17,10 @@ minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt
 # Site Settings
 locale                   : "en-US"
 title                    : "[binary whales]"
-title_separator          : "-"
+title_separator          : "  "
+seo_title                : "[binary whales] Matteo Campanelli's Home Page"
 name                     : "Matteo Campanelli"
-description              : "Matteo Campanelli's website."
+description              : "Matteo Campanelli's Home Page."
 url                      : "https://www.binarywhales.com" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "matteocam/matteocam.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
