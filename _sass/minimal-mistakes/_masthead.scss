@@ -47,7 +47,7 @@
   align-self: center;
   font-weight: bold;
   z-index: 20;
-  font-size: 1.3em;
+  font-size: 1.75em;
 }
 
 .masthead__menu {
@@ -58,7 +58,7 @@
   clear: both;
 
   .site-nav {
-    margin-left: 0;
+    margin-left: 0.65em; // Used to be 0
 
     @include breakpoint($small) {
       float: right;

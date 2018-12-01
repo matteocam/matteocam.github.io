@@ -6,21 +6,21 @@
    Typography
    ========================================================================== */
 
-$doc-font-size: 16 !default;
+$doc-font-size: 15 !default;
 
 /* paragraph indention */
 $paragraph-indent: false !default; // true, false (default)
-$indent-var: 1.3em !default;
+$indent-var: 1.1em !default;
 
 /* system typefaces */
 $serif: Georgia, Times, serif !default;
-$sans-serif: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
-  "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$sans-serif: "Lucida Grande", -apple-system, BlinkMacSystemFont, "Lucida Grande", "Arial", "Segoe UI",
+  "Helvetica Neue", sans-serif !default;
 $monospace: Monaco, Consolas, "Lucida Console", monospace !default;
 
 /* sans serif typefaces */
 $sans-serif-narrow: $sans-serif !default;
-$helvetica: "Exo 2", Lato, Helvetica, "Helvetica Neue", Arial, sans-serif !default;
+$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 
 /* serif typefaces */
 $euler: NeoEulerMedium !default;
@@ -30,7 +30,7 @@ $bodoni: "Bodoni MT", serif !default;
 $calisto: "Calisto MT", serif !default;
 $garamond: Garamond, serif !default;
 
-$global-font-family: $sans-serif !default;
+$global-font-family: $helvetica !default;
 $header-font-family: $sans-serif !default;
 $caption-font-family: $serif !default;
 
@@ -141,7 +141,7 @@ $x-large: 1280px !default;
    Grid
    ========================================================================== */
 
-$right-sidebar-width-narrow: 200px !default;
+$right-sidebar-width-narrow: 14.4em !default; // Used be 200px; 14.5m comes from the observations on the size of title
 $right-sidebar-width: 300px !default;
 $right-sidebar-width-wide: 400px !default;
 
