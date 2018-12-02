@@ -8,6 +8,7 @@
 
 .sidebar {
   text-align: center;
+  margin-top: 0.5em;
 
   @include clearfix();
   @include breakpoint(max-width $large) {
@@ -22,7 +23,7 @@
     //padding-left: 2em; // my addition
     float: left;
     width: calc(#{$right-sidebar-width-narrow} - 1em);
-    opacity: 0.8;
+    opacity: 0.85;
     -webkit-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
 

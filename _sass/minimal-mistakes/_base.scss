@@ -2,6 +2,15 @@
    BASE ELEMENTS
    ========================================================================== */
 
+/*
+  @font-face {
+       font-family: ProximaNova;
+       src: url("/assets/fonts/ProximaNova.otf") format('opentype');
+       font-weight: bold;
+       font-style: normal;
+   }
+   */
+
 html {
   /* sticky footer fix */
   position: relative;
@@ -65,7 +74,7 @@ small,
 }
 
 p {
-  margin-bottom: 1.3em;
+  margin-bottom: 1.1em; // used to be 1.3em
 }
 
 u,

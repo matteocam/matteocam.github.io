@@ -22,8 +22,7 @@ $base0e: #c792ea;
 $base0f: #ff5370;
 
 
-$text-color: #302222;  
+$text-color: #373737; // I had made it 302222 earlier  
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
-
