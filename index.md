@@ -17,7 +17,7 @@ In some of my latest projects I worked on questions such as:
 - Can we compose *SNARKs* in an efficient and general manner? [[paper]](https://eprint.iacr.org/2019/142)
 - How (not) to pay for digital goods and services on *Bitcoin*? [[paper]](https://eprint.iacr.org/2017/566)
 - Is expressive, efficient "higher" crypto (e.g. MPC, FHE, VC) possible *without cryptographic assumptions* (at the cost of being secure against "weaker" adversaries)? [[paper]](https://eprint.iacr.org/2018/297)
-- How to design protocols  for verifiable computation when a server is *economically incentivized* (and with no cryptographic assumptions)?
+- How to design protocols  for verifiable computation when a server is *economically incentivized* (and with no cryptographic assumptions)? [[thesis]](https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=3823&context=gc_etds)
 
 
 ***
