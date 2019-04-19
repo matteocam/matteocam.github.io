@@ -7,7 +7,7 @@ author_profile: true
 
 
 I'm a post-doctoral researcher at the [IMDEA Software Institute](https://software.imdea.org/index.html), currently working with
-[Dario Fiore](http://www.dariofiore.it/) on  efficient **Zero-Knowledge proof systems**, as well as other cryptography-flavored topics.
+[Dario Fiore](http://www.dariofiore.it/) on  efficient _Zero-Knowledge proof systems_ and  other cryptography-flavored topics.
 
 I received a Ph.D. from the Graduate Center of the City University of New York where I worked with [Rosario Gennaro](http://www-cs.ccny.cuny.edu/~rosario/).
 
