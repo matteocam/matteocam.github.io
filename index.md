@@ -22,8 +22,8 @@ In some of my latest projects I worked on questions such as:
 
 ## ZK Standards
 
-- A proposal for the standardization of the notion of commit-and-prove [[proposal draft]](https://zkproof.org/workshop2/main.html)
-- A presentation on commit-and-prove at the [[2nd ZKProof Workshop]](assets/misc/CP-standard-ZKProof-slides.pdf)
+- A [proposal](assets/misc/zkproof-cp-standards.pdf) for the standardization of the notion of _commit-and-prove_;
+- [Slides](assets/misc/CP-standard-ZKProof-slides.pdf) on commit-and-prove used at the [2nd ZKProof Workshop](https://zkproof.org/workshop2/main.html).
 
 ***
 You can find a list of publications on [my Google Scholar page](https://scholar.google.com/citations?user=8xba6isAAAAJ&hl=en&oi=ao).
