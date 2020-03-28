@@ -15,7 +15,7 @@ I received a Ph.D. from the Graduate Center of the City University of New York w
 <sup>You can find a full list of publications on [my Google Scholar page](https://scholar.google.com/citations?user=8xba6isAAAAJ&hl=en&oi=ao).</sup>
 
 In some of my latest projects I worked on questions such as:
-- Can we compose *SNARKs* in an efficient and general manner? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf)
+- Can we compose *SNARKs* in an efficient and general manner? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
 - How can we prove efficiently and privately that an element is in a set (e.g. that a user is whitelisted) ? [[paper]](https://eprint.iacr.org/2019/1255)
 - How (not) to pay for digital goods and services on *Bitcoin*? [[paper]](https://eprint.iacr.org/2017/566)
 - Is expressive, efficient "higher" crypto (e.g. MPC, FHE, VC) possible *without cryptographic assumptions* (at the cost of being secure against "weaker" adversaries)? [[paper]](https://eprint.iacr.org/2018/297)
