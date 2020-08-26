@@ -8,11 +8,11 @@ author_profile: true
 
 I'm a post-doctoral researcher in cryptography at [Aarhus University](https://www.au.dk/). 
 
-In previously worked at the 
+I previously worked at the 
 [IMDEA Software Institute](https://software.imdea.org/index.html) with
 [Dario Fiore](http://www.dariofiore.it/) on  efficient _Zero-Knowledge proof systems_ and  other cryptography-flavored topics.
 
-I received a Ph.D. from the Graduate Center of the City University of New York where I worked with [Rosario Gennaro](http://www-cs.ccny.cuny.edu/~rosario/).
+While at the Graduate Center of the City University of New York (CUNY), I worked with [Rosario Gennaro](http://www-cs.ccny.cuny.edu/~rosario/); in 2018 both Rosario and CUNY made the careless blunder of giving me a PhD.
 
 ## Research
 <sup>You can find a full list of publications on [my Google Scholar page](https://scholar.google.com/citations?user=8xba6isAAAAJ&hl=en&oi=ao).</sup>
