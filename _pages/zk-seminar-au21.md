@@ -1,5 +1,5 @@
 ---
-title: "Sample Page"
+title: "Techniques for Efficient Zero-Knowledge Arguments"
 permalink: /efficient-zk-au-2021/
 date: 2021-03-11T03:02:20+00:00
 ---
