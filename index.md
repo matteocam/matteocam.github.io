@@ -31,3 +31,6 @@ In some of my latest projects I worked on questions as:
 - A [proposal](assets/misc/zkproof-cp-standards-revised.pdf) for the standardization of the notion of _commit-and-prove_ accepted at the [3rd ZKProof Workshop](https://zkproof.org/workshop3/main.html).;
 - [Slides](assets/misc/CP-standard-ZKProof-slides.pdf) on commit-and-prove used at the [2nd ZKProof Workshop](https://zkproof.org/workshop2/main.html). 
 
+## Teaching 
+
+- [Seminar @ AU: Techniques for Efficient ZK Arguments (Spring '21)](efficient-zk-au-2021/)
