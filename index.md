@@ -33,4 +33,4 @@ In some of my latest projects I worked on questions as:
 
 ## Teaching 
 
-- [Seminar @ AU: Techniques for Efficient ZK Arguments (Spring '21)](efficient-zk-au-2021/)
+- [Seminar @ AU: Techniques for Efficient ZK Arguments (Spring '21)](efficient-zk-au-2021/) (postponed)
