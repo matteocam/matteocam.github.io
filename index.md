@@ -19,7 +19,7 @@ While at the Graduate Center of the City University of New York (CUNY), I worked
 
 In some of my latest projects I worked on questions as:
 
-#### SNARKS and Such
+#### SNARKs and Such
 - What are the efficiency tradeoffs of SNARKs with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069)
 - Can we compose *SNARKs* in an efficient and general manner? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
 - How much can we decentralize authenticated data structures? [[paper]](https://eprint.iacr.org/2020/149) 
