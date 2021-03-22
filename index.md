@@ -36,7 +36,7 @@ In some of my latest projects I worked on questions as:
 
 ## ZK Standards
 
-I am co-chair of the working group leading the effort to standardize [[(commit/encrypt)-and-prove]](https://hackmd.io/@dariofiore/rkXo8EBp8) in zero-knowledge proofs. Some resources:
+I am co-chair of the working group leading the effort to standardize [(commit/encrypt)-and-prove](https://hackmd.io/@dariofiore/rkXo8EBp8) in zero-knowledge proofs. Some resources:
 - A [proposal](assets/misc/zkproof-cp-standards-revised.pdf) for the standardization of the notion of _commit-and-prove_ accepted at the [3rd ZKProof Workshop](https://zkproof.org/workshop3/main.html).
 - [Slides](assets/misc/CP-standard-ZKProof-slides.pdf) on commit-and-prove used at the [2nd ZKProof Workshop](https://zkproof.org/workshop2/main.html). 
 
