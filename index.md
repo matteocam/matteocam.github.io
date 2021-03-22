@@ -42,4 +42,4 @@ I am co-chair of the working group leading the effort to standardize [(commit/en
 
 ## Teaching 
 
-- [Seminar @ AU: Techniques for Efficient ZK Arguments (Spring '21)](efficient-zk-au-2021/) (postponed)
+- [Seminar @ AU: Techniques for Efficient ZK Arguments (Spring '21)](efficient-zk-au-2021/) (postponed due to covid restrictions)
