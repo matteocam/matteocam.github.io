@@ -21,7 +21,7 @@ In some of my latest projects I worked on questions as:
 
 ### SNARKs and Such
 - What are the efficiency tradeoffs of SNARKs with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[A.Querol's great slides on Lunar]](assets/misc/lunar-anais.pdf)
-- Can we construct efficient commit-and-prove SNARKs (SNARKs over committed inputs) with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[ECLIPSE  paper]](https://eprint.iacr.org/2021/934) [[Lunar&ECLIPLSE slides]](assets/misc/LunarEclipse.pdf) 
+- Can we construct efficient commit-and-prove SNARKs (SNARKs over committed inputs) with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[ECLIPSE  paper]](https://eprint.iacr.org/2021/934) [[Lunar&ECLIPSE slides]](assets/misc/LunarEclipse.pdf) 
 - Can we compose *SNARKs* in an efficient and general manner? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
 - How much can we decentralize authenticated data structures? [[paper]](https://eprint.iacr.org/2020/149) 
 - How can we prove set-membership efficiently and privately (applications to whitelisting, anonymous cryptocurrencies, etc.)? [[paper]](https://eprint.iacr.org/2019/1255) _(see also Veksel below)_
