@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
   	<title>Felix's PhD Game</title>
       <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -14,10 +15,15 @@
 
   <body>
 
-    <div id="score">0</div>
+    <!--<div id="score">0</div>-->
     <canvas id="snakeboard" width="1000" height="1000"></canvas>
 
     <style>
+      body {
+       background: #000;
+        text-align: center;
+        font-family: 'Bungee', cursive;
+      }
       #snakeboard {
         position: absolute;
         top: 50%;
@@ -41,6 +47,8 @@
     const snake_col = 'lightblue';
     const snake_border = 'darkblue';
 
+    var timeOutId = null;
+
     let felixPicUrl = "https://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.200/images/Personen/fengelmann-600x600.jpg"
     var felixImg = new Image();
     felixImg.src = felixPicUrl;
@@ -48,6 +56,10 @@
     let scrollUrl = "scroll.png"
     var scrollImg = new Image();
     scrollImg.src = scrollUrl;
+
+    let hatUrl = "https://png.pngtree.com/png-clipart/20200311/ourlarge/pngtree-black-graduation-cap-png-image_2133648.jpg";
+    var hatImg = new Image();
+    hatImg.src = hatUrl;
     
     
     let snake = [
@@ -67,11 +79,113 @@
     let dx = basic_size;
     // Vertical velocity
     let dy = 0;
+
+    var creditsText = "";
+    var textDirection ="";
+
+       
+    textDirection ="right";
+    textXpos = 200;
+    textYpos = 700;
+    creditsText =  
+    `Congratulations by all of us!
+
+Contributions for our _tokens_ of appreciations by:
+
+Lennart
+Aurore
+Akira
+Rahul
+Carsten
+Claudio
+Diego
+Danilo
+Luisa
+Sophia
+Sebastian
+Hamid
+Mathias
+Jesper
+Alex
+Adam
+Divya
+Ivan
+Nikolaj
+Damiano
+Nikolas 
+Kelsey
+Mahak
+Malene
+
+For all the bad taste (and poor coding), blame: Matteo
+    `;
+    //creditsText = "Animation!\nOther Animation Other Animation\n Other Animation Other Animation Other Animation";    
+
+    function makeText() {
+      var lines = creditsText.split('\n');
+      var lineheight = 20;
+
+      for (var j = 0; j<lines.length; j++) {
+        snakeboard_ctx.fillText(lines[j], textXpos, textYpos + (j*lineheight) ); 
+      }
+      //snakeboard_ctx.fillText( creditsText, textXpos, textYpos);  
+       
+    }
+
+    function creditsImpl() {            
+      // Clear screen
+      snakeboard_ctx.clearRect(0, 0, 1000, 1000);
+
+      snakeboard_ctx.font = '20px Bungee,cursive';
+      snakeboard_ctx.fillStyle = '#FF0000';
+      snakeboard_ctx.textBaseline = 'top';
+
+      makeText();
+      
+      snakeboard_ctx.globalAlpha = 1;
+      snakeboard_ctx.fillStyle = '#fff';
+      snakeboard_ctx.fillRect(0, 0, 1000, 250);    
+      snakeboard_ctx.fillRect(0, 750, 1000, 1000);    
+
+      
+
+                              
+      var metrics = snakeboard_ctx.measureText(creditsText);
+      var textWidth = metrics.width;
+
+      textYpos -= 5;
+      
+           
+      timeOutId = setTimeout(function onTick() {
+          // Repeat
+          creditsImpl();
+        }, 50);
+    }    
+
+    function resetGame()
+    {
+      snake = [
+      {x: startx, y: starty, head: false},
+      {x: startx-basic_size, y: starty, head: false},
+      {x: startx-2*basic_size, y: starty, head: false},
+      {x: startx-3*basic_size, y: starty,  head: false},
+      {x: startx-4*basic_size, y: starty,  head: true}
+    ]
+
+    score = 0;
+    // True if changing direction
+    changing_direction = false;
+    // Horizontal velocity
+    
+    dx = basic_size;
+    // Vertical velocity
+    dy = 0;
+    }
     
     
     // Get the canvas element
     const snakeboard = document.getElementById("snakeboard");
-    // Return a two dimensional drawing context
+    // Return a two dimensional drawing snakeboard_ctx
     const snakeboard_ctx = snakeboard.getContext("2d");
     // Start game
     main();
@@ -83,17 +197,22 @@
     // main function called repeatedly to keep the game running
     function main() {
 
-        if (has_game_ended()) return;
+        if (has_game_ended()) {
+          console.log("Ended");
+          clearTimeout(timeOutId);
+          createResultsScreen();
+          return;
+        }
 
         changing_direction = false;
-        setTimeout(function onTick() {
-        clear_board();
-        drawFood();
-        move_snake();
-        drawSnake();
-        // Repeat
-        main();
-      }, 250)
+        timeOutId = setTimeout(function onTick() {
+          clear_board();
+          drawFood();
+          move_snake();
+          drawSnake();
+          // Repeat
+          main();
+        }, 250);
     }
     
     // draw a border around the canvas
@@ -119,8 +238,14 @@
       snakeboard_ctx.drawImage(scrollImg, food_x, food_y, basic_size, basic_size);
       snakeboard_ctx.font = '18px serif';
     
-      textStr = "New Paper!";
-      text_x = food_x+textStr.length/2;
+      if (score % 3 == 0)
+        textStr = "New Paper!";
+      else if (score % 3 == 1)
+        textStr = "Oh, boy! Paper!"
+      else if (score % 3 == 2)
+        textStr = "Gee, Another Paper!"
+
+      text_x = food_x-textStr.length/2;
       text_y = food_y+basic_size+22;
       snakeboard_ctx.strokeText(textStr, text_x, text_y);
 
@@ -142,13 +267,16 @@
       if (snakePart.head) {
         snakeboard_ctx.drawImage(felixImg, snakePart.x, snakePart.y, basic_size, basic_size);
       } else {
-        snakeboard_ctx.fillRect(snakePart.x, snakePart.y, basic_size, basic_size);
+        snakeboard_ctx.drawImage(hatImg, snakePart.x, snakePart.y, basic_size, basic_size);
+        //snakeboard_ctx.fillRect(snakePart.x, snakePart.y, basic_size, basic_size);
       }
       // Draw a border around the snake part
       snakeboard_ctx.strokeRect(snakePart.x, snakePart.y, basic_size, basic_size);
     }
 
     function has_game_ended() {
+      if (score > 7)
+        return true;
       for (let i = 4; i < snake.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true
       }
@@ -174,6 +302,71 @@
         if (has_eaten) gen_food();
       });
     }
+
+    function createResultsScreen(color) {
+      const resultNode = document.createElement('div');
+      resultNode.id = 'result';
+      resultNode.style.color = color || '#fff';
+      resultNode.style.position = 'fixed';
+      resultNode.style.top = 0;
+      resultNode.style.display = 'grid';
+      resultNode.style.gridTemplateColumns = '1fr';
+      resultNode.style.width = '100%';
+      resultNode.style.height = '100vh';
+      resultNode.style.justifyContent = 'center';
+      resultNode.style.alignItems = 'center';
+      resultNode.style.background = '#00000088';
+
+      const resultText = document.createElement('h1');
+
+      if (score > 7) {
+        resultText.innerText = "On fire! Congratulations for your PhD!";
+      }
+      else if (score > 3) {
+        resultText.innerText = "It's done! Congratulations for your PhD!";
+      } else {
+        resultText.innerText = score + " paper(s)?! Feed more the PhD beast!";
+      }
+      resultText.style.fontFamily = 'Bungee, cursive';
+      resultText.style.textTransform = 'uppercase';  
+      const replayButton = document.createElement('button');
+      replayButton.innerText = 'Replay (Enter)';
+      replayButton.style.fontFamily = 'Bungee, cursive';
+      replayButton.style.textTransform = 'uppercase';
+      replayButton.style.padding = '10px 30px';
+      replayButton.style.fontSize = '1.2rem';
+      replayButton.style.margin = '0 auto';
+      replayButton.style.cursor = 'pointer';
+      
+      replayButton.onclick = () => {
+        console.log("Stuff");
+        resultNode.remove();
+        resetGame();
+        main();
+        gen_food();
+
+        document.addEventListener("keydown", change_direction);
+      }; 
+      resultNode.appendChild(resultText);
+      resultNode.appendChild(replayButton);
+
+      otherButton = replayButton.cloneNode();
+      otherButton.innerText = "What's all this about??";
+      otherButton.onclick = () => {
+        resultNode.remove();
+        snakeboard_ctx.clearRect(0, 0, snakeboard_ctx.canvas.width, snakeboard_ctx.canvas.height);
+        creditsImpl();
+      }; 
+      resultNode.appendChild(otherButton);
+
+      document.querySelector('body').appendChild(resultNode);
+      
+      document.addEventListener('keydown', (e) => {
+        let key = event.keyCode;
+        if (key == 13) // 'Enter'
+          console.log("Resetting");
+      });
+};
 
     function change_direction(event) {
       const LEFT_KEY = 37;
@@ -217,9 +410,9 @@
       const has_eaten_food = snake[0].x === food_x && snake[0].y === food_y;
       if (has_eaten_food) {
         // Increase score
-        score += basic_size;
+        score += 1;
         // Display score on screen
-        document.getElementById('score').innerHTML = score;
+        document.getElementById('score').innerHTML = score + " papers";
         // Generate new food location
         gen_food();
       } else {
