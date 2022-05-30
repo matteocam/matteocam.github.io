@@ -25,9 +25,23 @@ In some of my latest projects I worked on questions as:
 - How much can we decentralize authenticated data structures? [[paper]](https://eprint.iacr.org/2020/149) 
 - How can we prove set-membership efficiently and privately (applications to whitelisting, anonymous cryptocurrencies, etc.)? [[paper]](https://eprint.iacr.org/2019/1255) _(see also Veksel below)_
 
+
+### Witness-Encryption-like Primitives
+
+- _Encryption to the Future_: How can we emulate WE to pass state long-term in decentralized networks? [[paper]](https://eprint.iacr.org/2021/1423)
+- How to simply approximate witness encryption through witness-authenticated key exchange? [[paper]](https://eprint.iacr.org/2022/382)
+- Witness Encryption over Succinct Functional Commitments (soon on eprint)
+
+### On Theory for Cryptographic Proofs
+
+- What are theoretical limits for extractable arguments with nice composability features? [[paper]](https://eprint.iacr.org/2022/638)
+- How much can we push designated-verifier primitives to achieve some level of public-verifiability (in a certain setting)? [[paper]](https://eprint.iacr.org/2021/1618)
+
 ### Efficient Proofs in Cryptocurrencies
+
 - How can we obtain efficient anonymous payments from well-studied assumptions? [[Veksel paper]](https://eprint.iacr.org/2021/327) [[Veksel code]](https://github.com/matteocam/veksel)
 - How (not) to pay for digital goods and services on *Bitcoin*? [[paper]](https://eprint.iacr.org/2017/566)
+- How to construct Zero-Knowledge on Homomorphic commitments to KV maps (a _"Z-KeyWee"_, or Z&#129373;) and how to use them for anonymous cryptocurrencies?  [[paper]](https://eprint.iacr.org/2021/1678)
 
 ### Rationality and Fine-Grained Cryptography
 - Is expressive, efficient "higher" crypto (e.g. MPC, FHE, VC) possible *without cryptographic assumptions* (at the cost of being secure against "weaker" adversaries)? [[paper]](https://eprint.iacr.org/2018/297)
@@ -44,3 +58,7 @@ I am co-chair of the working group leading the effort to standardize [(commit/en
 
 - [Seminar @ AU: Techniques for Efficient ZK Arguments (Spring '21)](efficient-zk-au-2021/) (postponed due to covid restrictions)
 - [Seminar @ Hanyang University, Seoul: Techniques for Efficient Non-Interactive Probabilist Proofs (February '20)](https://drive.google.com/file/d/1zIldgk2tWdyck_qF4W_2eTf27Lal_wZ_/view?usp=sharing) [[some of the  material]](https://drive.google.com/drive/folders/1lCSlrB8bFTXGfXUc4DizR6AscLgFg4jL?usp=sharing)
+
+
+
+
