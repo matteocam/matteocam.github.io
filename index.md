@@ -28,13 +28,13 @@ In some of my latest projects I worked on questions as:
 
 ### Witness-Encryption-like Primitives
 
-- _Encryption to the Future_: How can we emulate WE to pass state long-term in decentralized networks? [[paper]](https://eprint.iacr.org/2021/1423) [[slides]](talks/SNARGs-impossibilities-IMDEA.pptx)
+- _Encryption to the Future_: How can we emulate WE to pass state long-term in decentralized networks? [[paper]](https://eprint.iacr.org/2021/1423)
 - How to simply approximate witness encryption through witness-authenticated key exchange? [[paper]](https://eprint.iacr.org/2022/382)
 - Witness Encryption over Succinct Functional Commitments (soon on eprint)
 
 ### On Theory for Cryptographic Proofs
 
-- What are theoretical limits for extractable arguments with nice composability features? [[paper]](https://eprint.iacr.org/2022/638)
+- What are theoretical limits for extractable arguments with nice composability features? [[paper]](https://eprint.iacr.org/2022/638) [[slides]](talks/SNARGs-impossibilities-IMDEA.pptx)
 - How much can we push designated-verifier primitives to achieve some level of public-verifiability (in a certain setting)? [[paper]](https://eprint.iacr.org/2021/1618)
 
 ### Efficient Proofs in Cryptocurrencies
