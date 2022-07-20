@@ -28,7 +28,7 @@ In some of my latest projects I worked on questions as:
 
 ### Witness-Encryption-like Primitives
 
-- _Encryption to the Future_: How can we emulate WE to pass state long-term in decentralized networks? [[paper]](https://eprint.iacr.org/2021/1423)
+- _Encryption to the Future_: How can we emulate WE to pass state long-term in decentralized networks? [[paper]](https://eprint.iacr.org/2021/1423) [[slides]](talks/SNARGs-impossibilities-IMDEA.pptx)
 - How to simply approximate witness encryption through witness-authenticated key exchange? [[paper]](https://eprint.iacr.org/2022/382)
 - Witness Encryption over Succinct Functional Commitments (soon on eprint)
 
@@ -56,7 +56,7 @@ I am co-chair of the working group leading the effort to standardize [(commit/en
 
 ## Teaching 
 
-- [Seminar @ AU: Techniques for Efficient ZK Arguments (Spring '21)](efficient-zk-au-2021/) (postponed due to covid restrictions)
+- [Seminar @ AU: Techniques for Efficient ZK Arguments (Fall '21)](https://www.notion.so/binarywhales/ZK-Seminar-AU-Fall-21-c4db4f3064ff48ef8f0a5b7f2537f462)
 - [Seminar @ Hanyang University, Seoul: Techniques for Efficient Non-Interactive Probabilist Proofs (February '20)](https://drive.google.com/file/d/1zIldgk2tWdyck_qF4W_2eTf27Lal_wZ_/view?usp=sharing) [[some of the  material]](https://drive.google.com/drive/folders/1lCSlrB8bFTXGfXUc4DizR6AscLgFg4jL?usp=sharing)
 
 
