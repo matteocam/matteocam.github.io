@@ -66,6 +66,11 @@ I was co-chair of the working group leading the effort to standardize [(commit/e
 - [Seminar @ AU: Techniques for Efficient ZK Arguments (Fall '21)](https://www.notion.so/binarywhales/ZK-Seminar-AU-Fall-21-c4db4f3064ff48ef8f0a5b7f2537f462)
 - [Seminar @ Hanyang University, Seoul: Techniques for Efficient Non-Interactive Probabilist Proofs (February '20)](https://drive.google.com/file/d/1zIldgk2tWdyck_qF4W_2eTf27Lal_wZ_/view?usp=sharing) [[some of the  material]](https://drive.google.com/drive/folders/1lCSlrB8bFTXGfXUc4DizR6AscLgFg4jL?usp=sharing)
 
-
-
+## Program Committees
+- Asiacrypt 2023
+- CCS 2023
+- CIFRIS 2023
+- ACNS 2023
+- ACNS 2022
+- ICPC 2021
 
