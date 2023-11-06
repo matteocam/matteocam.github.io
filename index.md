@@ -32,7 +32,7 @@ _In some of my latest projects I worked on questions as:_
 
 - _Encryption to the Future_: How can we emulate WE to pass state long-term in decentralized networks? [[paper]](https://eprint.iacr.org/2021/1423)
 - How to simply approximate witness encryption through witness-authenticated key exchange? [[paper]](https://eprint.iacr.org/2022/382)
-- Witness Encryption over Succinct Functional Commitments [[paper]](https://eprint.iacr.org/2022/1510)
+- Witness Encryption over Succinct Functional Commitments [[paper]](https://eprint.iacr.org/2022/1510) [[slides]](talks/sfc-iisc.pptx)
 
 ### On Theory for Cryptographic Proofs
 
