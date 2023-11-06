@@ -51,6 +51,9 @@ _In some of my latest projects I worked on questions as:_
 - Is expressive, efficient "higher" crypto (e.g. MPC, FHE, VC) possible *without cryptographic assumptions* (at the cost of being secure against "weaker" adversaries)? [[paper]](https://eprint.iacr.org/2018/297)
 - How to design protocols  for verifiable computation when a server is *economically incentivized* (and with no cryptographic assumptions)? [[thesis]](https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=3823&context=gc_etds) [[Sequential composability paper]](assets/misc/Sequentially Composable Rational Proofs.pdf) [[Space bounded computation paper]](assets/misc/Efficient Rational Proofs for Space Bounded Computation - Official.pdf)
 
+### Proofs of Space
+- How to apply (non-trivially) polynomial evaluation techniques to make decentralized storage more scalable? [[paper]](https://eprint.iacr.org/2023/1569.pdf)
+
 
 ## ZK Standards
 
