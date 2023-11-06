@@ -20,7 +20,7 @@ While at the Graduate Center of the City University of New York (CUNY), I worked
 _In some of my latest projects I worked on questions as:_
 
 ### SNARKs (and related primitives)
-- How can we obtain best combine techniques from fast proof schemes (e.g., Spartan) with those from extremely succinct proofs (e.g., Groth16) staying with a small (square-root) setup?  [[Testudo paper]](https://eprint.iacr.org/2023/961.pdf) [[Testudo blog post]](https://cryptonet.org/blog/testudo-efficient-snarks-with-smaller-setups)
+- How can we best combine techniques from fast proof schemes (e.g., Spartan) with those from extremely succinct proofs (e.g., Groth16) obtaining a small (_universal_) setup?  [[Testudo paper]](https://eprint.iacr.org/2023/961.pdf) [[Testudo blog post]](https://cryptonet.org/blog/testudo-efficient-snarks-with-smaller-setups)
 - What are the efficiency tradeoffs of SNARKs with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[Anaïs Querol's slides]](assets/misc/lunar-anais.pdf)
 - Can we construct efficient commit-and-prove SNARKs (SNARKs over committed inputs) with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[ECLIPSE  paper]](https://eprint.iacr.org/2021/934) [[Lunar&ECLIPSE slides]](assets/misc/LunarEclipse.pdf) 
 - Can we design and compose specialized *SNARKs* efficiently and simply? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
