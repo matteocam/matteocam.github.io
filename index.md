@@ -19,14 +19,14 @@ While at the Graduate Center of the City University of New York (CUNY), I worked
 _In some of my latest projects I worked on questions as:_
 
 ### SNARKs (and related primitives)
-- How can we obtain best combine techniques from fast proof schemes (e.g., Spartan) with those from extremely succinct proofs (e.g., Groth16) _and_, at at the same time, drastically reduce setup size?  [[Testudo paper]](https://eprint.iacr.org/2023/961.pdf) [[Testudo blog post]](https://cryptonet.org/blog/testudo-efficient-snarks-with-smaller-setups)
+- How can we obtain best combine techniques from fast proof schemes (e.g., Spartan) with those from extremely succinct proofs (e.g., Groth16) staying with a small (square-root) setup?  [[Testudo paper]](https://eprint.iacr.org/2023/961.pdf) [[Testudo blog post]](https://cryptonet.org/blog/testudo-efficient-snarks-with-smaller-setups)
 - What are the efficiency tradeoffs of SNARKs with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[Anaïs Querol's slides]](assets/misc/lunar-anais.pdf)
 - Can we construct efficient commit-and-prove SNARKs (SNARKs over committed inputs) with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[ECLIPSE  paper]](https://eprint.iacr.org/2021/934) [[Lunar&ECLIPSE slides]](assets/misc/LunarEclipse.pdf) 
 - Can we design and compose specialized *SNARKs* efficiently and simply? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
 - How much can we decentralize authenticated data structures? [[paper]](https://eprint.iacr.org/2020/149) 
 - How can we prove set-membership efficiently and privately (applications to whitelisting, anonymous cryptocurrencies, etc.)? [[paper]](https://eprint.iacr.org/2019/1255) _(see also Veksel and Curve Trees below)_
 - Can we construct _linear-map_ vector commitments from already deployed setups? What are their applications? How can we make them maintainable? [[paper]](https://eprint.iacr.org/2022/705.pdf)
-
+- Can we extend existing _lookup arguments_ so to apply them efficiently to zero-knowledge for machine learning? [[paper]](https://eprint.iacr.org/2023/1518)
 
 ### Witness-Encryption-like Primitives
 
@@ -38,6 +38,7 @@ _In some of my latest projects I worked on questions as:_
 
 - What are theoretical limits for extractable arguments with nice composability features? [[paper]](https://eprint.iacr.org/2022/638) [[slides]](talks/SNARGs-impossibilities-IMDEA.pptx)
 - How much can we push designated-verifier primitives to achieve some level of public-verifiability? [[paper]](https://eprint.iacr.org/2021/1618)
+- How to use obfuscation to compile designated-verifier primitives into publically verifiable ones? And can we compile other primitives in a similar manner? [[paper]](https://eprint.iacr.org/2022/732)
 
 ### Efficient Proofs in Cryptocurrencies
 
