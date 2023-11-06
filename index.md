@@ -7,23 +7,25 @@ author_profile: true
 
 
 I'm a research scientist at [Protocol Labs](https://protocol.ai). 
-I mostly work on efficient _zero-knowledge proof systems_ and other cryptography-flavored topics.
+I mostly work on efficient _zero-knowledge proof systems_, their building blocks, their foundations and their applications. My interest is in cryptography at large.
 
 I previously worked as a post-doctoral researcher at [Aarhus University](https://www.au.dk/) with [Claudio Orlandi](https://cs.au.dk/~orlandi/) (2020-2021) and at the [IMDEA Software Institute](https://software.imdea.org/index.html) with [Dario Fiore](http://www.dariofiore.it/) (2018-2020).
 
 While at the Graduate Center of the City University of New York (CUNY), I worked with [Rosario Gennaro](http://www-cs.ccny.cuny.edu/~rosario/); in 2018 both Rosario and CUNY made the careless blunder of giving me a PhD.
 
 ## Research
-<sup>You can find a full list of publications on [my Google Scholar page](https://scholar.google.com/citations?user=8xba6isAAAAJ&hl=en&oi=ao).</sup>
+<sup>My work has appearead at top- and high-rank cryptographic conferences. For a full list of publications see [my Google Scholar page](https://scholar.google.com/citations?user=8xba6isAAAAJ&hl=en&oi=ao). Below you can find my work organized by question/topic rather than year/conference.</sup>
 
 In some of my latest projects I worked on questions as:
 
-### SNARKs and Such
-- What are the efficiency tradeoffs of SNARKs with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[Anaïs Querol's slides]](assets/misc/lunar-anais.pdf)
+### SNARKs (and related primitives)
+- How can we obtain the best of both worlds of fast proof schemes (e.g., Spartan) and extremely succinct proof size (e.g., Groth16) and, at at the same time, drastically reduce the setup size?  [[Testudo paper]](https://eprint.iacr.org/2023/961.pdf) [[Testudo blog post]](https://cryptonet.org/blog/testudo-efficient-snarks-with-smaller-setups)
+- What are the efficiency tradeoffs of SNARKs with a single (universal) setup? ( [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[Anaïs Querol's slides]](assets/misc/lunar-anais.pdf)
 - Can we construct efficient commit-and-prove SNARKs (SNARKs over committed inputs) with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[ECLIPSE  paper]](https://eprint.iacr.org/2021/934) [[Lunar&ECLIPSE slides]](assets/misc/LunarEclipse.pdf) 
-- Can we compose *SNARKs* in an efficient and general manner? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
+- Can we design and compose specialized *SNARKs* efficiently and simply? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
 - How much can we decentralize authenticated data structures? [[paper]](https://eprint.iacr.org/2020/149) 
-- How can we prove set-membership efficiently and privately (applications to whitelisting, anonymous cryptocurrencies, etc.)? [[paper]](https://eprint.iacr.org/2019/1255) _(see also Veksel below)_
+- How can we prove set-membership efficiently and privately (applications to whitelisting, anonymous cryptocurrencies, etc.)? [[paper]](https://eprint.iacr.org/2019/1255) _(see also Veksel and Curve Trees below)_
+- Can we construct _linear-map_ vector commitments from already deployed setups? What are their applications? How can we make them maintainable? [[paper]](https://eprint.iacr.org/2022/705.pdf)
 
 
 ### Witness-Encryption-like Primitives
@@ -35,10 +37,11 @@ In some of my latest projects I worked on questions as:
 ### On Theory for Cryptographic Proofs
 
 - What are theoretical limits for extractable arguments with nice composability features? [[paper]](https://eprint.iacr.org/2022/638) [[slides]](talks/SNARGs-impossibilities-IMDEA.pptx)
-- How much can we push designated-verifier primitives to achieve some level of public-verifiability (in a certain setting)? [[paper]](https://eprint.iacr.org/2021/1618)
+- How much can we push designated-verifier primitives to achieve some level of public-verifiability? [[paper]](https://eprint.iacr.org/2021/1618)
 
 ### Efficient Proofs in Cryptocurrencies
 
+- Can we go beyond Merkle Trees for fast, transparent, succinct zero-knowledge proofs of set membership? [[Curve Trees paper]](https://eprint.iacr.org/2022/756) [[Slides USENIX talk]](https://www.usenix.org/system/files/sec23_slides_campanelli.pdf) [[Curve Trees code]](https://github.com/simonkamp/curve-trees)
 - How can we obtain efficient anonymous payments from well-studied assumptions? [[Veksel paper]](https://eprint.iacr.org/2021/327) [[Veksel code]](https://github.com/matteocam/veksel)
 - How (not) to pay for digital goods and services on *Bitcoin*? [[paper]](https://eprint.iacr.org/2017/566)
 - How to construct Zero-Knowledge on Homomorphic commitments to KV maps (a _"Z-KeyWee"_, or Z&#129373;) and how to use them for anonymous cryptocurrencies?  [[paper]](https://eprint.iacr.org/2021/1678)
@@ -50,7 +53,7 @@ In some of my latest projects I worked on questions as:
 
 ## ZK Standards
 
-I am co-chair of the working group leading the effort to standardize [(commit/encrypt)-and-prove](https://hackmd.io/@dariofiore/rkXo8EBp8) in zero-knowledge proofs. Some resources:
+I was co-chair of the working group leading the effort to standardize [(commit/encrypt)-and-prove](https://hackmd.io/@dariofiore/rkXo8EBp8) in zero-knowledge proofs. Some resources:
 - A [proposal](assets/misc/zkproof-cp-standards-4th.pdf) for the standardization of the notion of _commit-and-prove_ (as well as _encrypt-and-prove_) accepted at the [4th ZKProof Workshop](https://zkproof.org).
 - [Slides](assets/misc/CP-standard-ZKProof-slides.pdf) on commit-and-prove used at the [2nd ZKProof Workshop](https://zkproof.org/workshop2/main.html). 
 
