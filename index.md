@@ -14,13 +14,13 @@ I previously worked as a post-doctoral researcher at [Aarhus University](https:/
 While at the Graduate Center of the City University of New York (CUNY), I worked with [Rosario Gennaro](http://www-cs.ccny.cuny.edu/~rosario/); in 2018 both Rosario and CUNY made the careless blunder of giving me a PhD.
 
 ## Research
-<sup>My work has appearead at top- and high-rank cryptographic conferences. For a full list of publications see [my Google Scholar page](https://scholar.google.com/citations?user=8xba6isAAAAJ&hl=en&oi=ao). Below you can find my work organized by question/topic rather than year/conference.</sup>
+<sup>My work has appearead at top- and high-rank cryptographic conferences. For a full list of publications, see [my Google Scholar page](https://scholar.google.com/citations?user=8xba6isAAAAJ&hl=en&oi=ao). Below you can find my work organized by question/topic rather than year/conference.</sup>
 
-In some of my latest projects I worked on questions as:
+_In some of my latest projects I worked on questions as:_
 
 ### SNARKs (and related primitives)
-- How can we obtain the best of both worlds of fast proof schemes (e.g., Spartan) and extremely succinct proof size (e.g., Groth16) and, at at the same time, drastically reduce the setup size?  [[Testudo paper]](https://eprint.iacr.org/2023/961.pdf) [[Testudo blog post]](https://cryptonet.org/blog/testudo-efficient-snarks-with-smaller-setups)
-- What are the efficiency tradeoffs of SNARKs with a single (universal) setup? ( [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[Anaïs Querol's slides]](assets/misc/lunar-anais.pdf)
+- How can we obtain best combine techniques from fast proof schemes (e.g., Spartan) with those from extremely succinct proofs (e.g., Groth16) _and_, at at the same time, drastically reduce setup size?  [[Testudo paper]](https://eprint.iacr.org/2023/961.pdf) [[Testudo blog post]](https://cryptonet.org/blog/testudo-efficient-snarks-with-smaller-setups)
+- What are the efficiency tradeoffs of SNARKs with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[Anaïs Querol's slides]](assets/misc/lunar-anais.pdf)
 - Can we construct efficient commit-and-prove SNARKs (SNARKs over committed inputs) with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[ECLIPSE  paper]](https://eprint.iacr.org/2021/934) [[Lunar&ECLIPSE slides]](assets/misc/LunarEclipse.pdf) 
 - Can we design and compose specialized *SNARKs* efficiently and simply? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
 - How much can we decentralize authenticated data structures? [[paper]](https://eprint.iacr.org/2020/149) 
