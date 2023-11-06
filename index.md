@@ -14,6 +14,7 @@ I previously worked as a post-doctoral researcher at [Aarhus University](https:/
 While at the Graduate Center of the City University of New York (CUNY), I worked with [Rosario Gennaro](http://www-cs.ccny.cuny.edu/~rosario/); in 2018 both Rosario and CUNY made the careless blunder of giving me a PhD.
 
 ## Research
+---
 <sup>My work has appearead at top- and high-rank cryptographic conferences. For a full list of publications, see [my Google Scholar page](https://scholar.google.com/citations?user=8xba6isAAAAJ&hl=en&oi=ao). Below you can find my work organized by question/topic rather than year/conference.</sup>
 
 _In some of my latest projects I worked on questions as:_
@@ -47,26 +48,28 @@ _In some of my latest projects I worked on questions as:_
 - How (not) to pay for digital goods and services on *Bitcoin*? [[paper]](https://eprint.iacr.org/2017/566)
 - How to construct Zero-Knowledge on Homomorphic commitments to KV maps (a _"Z-KeyWee"_, or Z&#129373;) and how to use them for anonymous cryptocurrencies?  [[paper]](https://eprint.iacr.org/2021/1678)
 
+### Proofs of Space
+- How to apply (non-trivially) polynomial evaluation techniques to make decentralized storage more scalable? [[paper]](https://eprint.iacr.org/2023/1569.pdf)
+
 ### Rationality and Fine-Grained Cryptography
 - Is expressive, efficient "higher" crypto (e.g. MPC, FHE, VC) possible *without cryptographic assumptions* (at the cost of being secure against "weaker" adversaries)? [[paper]](https://eprint.iacr.org/2018/297)
 - How to design protocols  for verifiable computation when a server is *economically incentivized* (and with no cryptographic assumptions)? [[thesis]](https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=3823&context=gc_etds) [[Sequential composability paper]](assets/misc/Sequentially Composable Rational Proofs.pdf) [[Space bounded computation paper]](assets/misc/Efficient Rational Proofs for Space Bounded Computation - Official.pdf)
 
-### Proofs of Space
-- How to apply (non-trivially) polynomial evaluation techniques to make decentralized storage more scalable? [[paper]](https://eprint.iacr.org/2023/1569.pdf)
-
-
 ## ZK Standards
+---
 
 I was co-chair of the working group leading the effort to standardize [(commit/encrypt)-and-prove](https://hackmd.io/@dariofiore/rkXo8EBp8) in zero-knowledge proofs. Some resources:
 - A [proposal](assets/misc/zkproof-cp-standards-4th.pdf) for the standardization of the notion of _commit-and-prove_ (as well as _encrypt-and-prove_) accepted at the [4th ZKProof Workshop](https://zkproof.org).
 - [Slides](assets/misc/CP-standard-ZKProof-slides.pdf) on commit-and-prove used at the [2nd ZKProof Workshop](https://zkproof.org/workshop2/main.html). 
 
 ## Teaching 
+---
 
 - [Seminar @ AU: Techniques for Efficient ZK Arguments (Fall '21)](https://www.notion.so/binarywhales/ZK-Seminar-AU-Fall-21-c4db4f3064ff48ef8f0a5b7f2537f462)
 - [Seminar @ Hanyang University, Seoul: Techniques for Efficient Non-Interactive Probabilist Proofs (February '20)](https://drive.google.com/file/d/1zIldgk2tWdyck_qF4W_2eTf27Lal_wZ_/view?usp=sharing) [[some of the  material]](https://drive.google.com/drive/folders/1lCSlrB8bFTXGfXUc4DizR6AscLgFg4jL?usp=sharing)
 
 ## Program Committees
+---
 - Asiacrypt 2023
 - CCS 2023
 - CIFRIS 2023
