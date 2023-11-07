@@ -26,6 +26,7 @@ _In some of my latest projects I worked on questions as:_
 - Can we design and compose specialized *SNARKs* efficiently and simply? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
 - How much can we decentralize authenticated data structures? [[paper]](https://eprint.iacr.org/2020/149) 
 - How can we prove set-membership efficiently and privately (applications to whitelisting, anonymous cryptocurrencies, etc.)? [[paper]](https://eprint.iacr.org/2019/1255) _(see also Veksel and Curve Trees below)_
+- How can we prove _batch_ set-membership succinctly and efficiently compose it with other SNARKs? [[HARiSA paper]](https://eprint.iacr.org/2021/1672) [[Talk by Dario Fiore]](https://www.youtube.com/watch?v=Hr2S8TbrWck)
 - Can we construct _linear-map_ vector commitments from already deployed setups? How to make them maintainable generically? How to use them? [[paper]](https://eprint.iacr.org/2022/705.pdf)
 - Can we extend existing _lookup arguments_ so to apply them efficiently to zero-knowledge for machine learning? [[paper]](https://eprint.iacr.org/2023/1518)
 
