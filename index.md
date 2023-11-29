@@ -21,7 +21,7 @@ _In some of my latest projects I worked on questions as:_
 
 ### SNARKs (and related primitives)
 - How can we best combine techniques from fast proof schemes (e.g., Spartan) with those from extremely succinct proofs (e.g., Groth16) obtaining a small (_universal_) setup?  [[Testudo paper]](https://eprint.iacr.org/2023/961.pdf) [[Testudo blog post]](https://cryptonet.org/blog/testudo-efficient-snarks-with-smaller-setups)
-- What are the efficiency tradeoffs of SNARKs with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[Anaïs Querol's slides]](assets/misc/lunar-anais.pdf)
+- What are the efficiency tradeoffs of SNARKs with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[Anaïs Querol's slides]](assets/misc/lunar-anais.pdf) [Lunar code]](https://github.com/imdea-software/lunar)
 - Can we construct efficient commit-and-prove SNARKs (SNARKs over committed inputs) with a single (universal) setup? [[Lunar paper]](https://eprint.iacr.org/2020/1069) [[ECLIPSE  paper]](https://eprint.iacr.org/2021/934) [[Lunar&ECLIPSE slides]](assets/misc/LunarEclipse.pdf) 
 - Can we design and compose specialized *SNARKs* efficiently and simply? [[LegoSNARK paper]](https://eprint.iacr.org/2019/142) [[slides]](assets/misc/legosnark-amsterdam19.pdf) [[LegoSNARK code]](https://github.com/imdea-software/legosnark)
 - How much can we decentralize authenticated data structures? [[paper]](https://eprint.iacr.org/2020/149) 
@@ -66,8 +66,9 @@ I was co-chair of the working group leading the effort to standardize [(commit/e
 ## Teaching 
 ---
 
-- [Seminar @ AU: Techniques for Efficient ZK Arguments (Fall '21)](https://www.notion.so/binarywhales/ZK-Seminar-AU-Fall-21-c4db4f3064ff48ef8f0a5b7f2537f462)
+- [Seminar @ Aaarhus University: Techniques for Efficient ZK Arguments (Fall 2021)](https://www.notion.so/binarywhales/ZK-Seminar-AU-Fall-21-c4db4f3064ff48ef8f0a5b7f2537f462)
 - [Seminar @ Hanyang University, Seoul: Techniques for Efficient Non-Interactive Probabilist Proofs (February '20)](https://drive.google.com/file/d/1zIldgk2tWdyck_qF4W_2eTf27Lal_wZ_/view?usp=sharing) [[some of the  material]](https://drive.google.com/drive/folders/1lCSlrB8bFTXGfXUc4DizR6AscLgFg4jL?usp=sharing)
+- [Discrete Mathematical Structures](https://www.ccny.cuny.edu/compsci/cs104_description) @ The City College of New York (Spring 2016)
 
 ## Program Committees
 ---
