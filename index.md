@@ -72,6 +72,7 @@ I was co-chair of the working group leading the effort to standardize [(commit/e
 
 ## Program Committees
 ---
+- CCS 2024
 - Asiacrypt 2023
 - CCS 2023
 - CIFRIS 2023
