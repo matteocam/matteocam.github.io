@@ -80,3 +80,7 @@ I was co-chair of the working group leading the effort to standardize [(commit/e
 - ACNS 2022
 - ICPC 2021
 
+## Software
+---
+- SNARK libraries: [LegoSNARK](https://github.com/imdea-software/legosnark) and [Lunar](https://github.com/imdea-software/lunar)
+- [citerus](https://github.com/matteocam/citerus), a tool to help retrieve cryptographic citations when writing papers in LaTeX.
