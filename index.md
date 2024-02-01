@@ -6,10 +6,10 @@ author_profile: true
 ---
 
 
-I'm a research scientist at [Protocol Labs](https://protocol.ai). 
+I'm a research scientist at [Matter Labs](https://matter-labs.io/). 
 I mostly work on efficient _zero-knowledge proof systems_, their building blocks, their foundations and their applications. My interest is in cryptography at large.
 
-I previously worked as a post-doctoral researcher at [Aarhus University](https://www.au.dk/) with [Claudio Orlandi](https://cs.au.dk/~orlandi/) (2020-2021) and at the [IMDEA Software Institute](https://software.imdea.org/index.html) with [Dario Fiore](http://www.dariofiore.it/) (2018-2020).
+I previously worked as a research scientist at [Protocol Labs](https://protocol.ai) and as a post-doctoral researcher at [Aarhus University](https://www.au.dk/) with [Claudio Orlandi](https://cs.au.dk/~orlandi/) (2020-2021) and at the [IMDEA Software Institute](https://software.imdea.org/index.html) with [Dario Fiore](http://www.dariofiore.it/) (2018-2020).
 
 While at the Graduate Center of the City University of New York (CUNY), I worked with [Rosario Gennaro](http://www-cs.ccny.cuny.edu/~rosario/); in 2018 both Rosario and CUNY made the careless blunder of giving me a PhD.
 
