@@ -29,6 +29,7 @@ _In some of my latest projects I worked on questions as:_
 - How can we prove _batch_ set-membership succinctly and efficiently compose it with other SNARKs? [[HARiSA paper]](https://eprint.iacr.org/2021/1672) [[Talk by Dario Fiore]](https://www.youtube.com/watch?v=Hr2S8TbrWck)
 - Can we construct _linear-map_ vector commitments from already deployed setups? How to make them maintainable generically? How to use them? [[paper]](https://eprint.iacr.org/2022/705.pdf)
 - Can we extend existing _lookup arguments_ so to apply them efficiently to zero-knowledge for machine learning? [[paper]](https://eprint.iacr.org/2023/1518)
+- How to construct simple verifiable DBs not relying on general-purpose SNARKs? [[Tavloid post]](tavloid/Tavloid%20towards%20Simple%20Verifiable%20Spreadsheets%20and%20b374a8fc2d31459fa0c2b982a0aea9c2.html)
 
 ### Witness-Encryption-like Primitives
 
