@@ -1,0 +1,702 @@
+<html><head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Tavloid: towards Simple Verifiable Spreadsheets and Databases</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+/*
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+*/
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b374a8fc-2d31-459f-a0c2-b982a0aea9c2" class="page sans"><header><h1 class="page-title">Tavloid: towards Simple Verifiable Spreadsheets and Databases</h1><p class="page-description"></p></header><div class="page-body"><p id="a4dab58a-2a80-4728-a16a-39886c3cdeec" class=""><em>Author:</em> <em>Matteo Campanelli</em></p><p id="431f1c9a-fbfe-4e83-b8f2-9746c8816799" class=""><em>Date: October 2022 (original publishing); May 2024 (republishing)</em></p><p id="ca2b02a0-962d-4c6a-894d-83a83800226b" class="">
+</p><nav id="136e1f73-f56d-441b-b86a-d495245d5bb0" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a698ed8a-04c1-4c65-acf0-d830d0c664cc">What’s Tavloid?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#333f3554-6f0c-4903-972c-ac858a0ea917">What it can do: queries and efficiency</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8cdefee5-fcbc-4da0-82ef-db6f28e54dc8">What’s next</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#88c65fc7-b3be-4473-8cad-c568df981bd0">Is there anything novel here?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5bef4660-5778-412d-bc16-51b8fceb33ed">How it works in a nutshell</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#72c3502f-dda9-42fa-89f6-9ddb6dd596b2">Warm-up: A solution for spreadsheets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#09a7ae2f-5325-447a-aff0-e5500654013a">Breaking down a query response</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#84d1c103-35d5-44ef-979e-112a642ee54a">Vector commitments: from row indices to values</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4213d924-0809-4768-8f03-1c47f6d02188">Reverse lookup commitments: from value criteria to rows</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#63a593bb-1bc7-444b-b29c-47113ff032d8">But not quite efficient yet—two more challenges to solve</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#270e2751-6bc7-44a5-9a87-19d80faaedd8">Putting it all together</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#480e278f-38df-4198-b25e-aa102f209e5e">From spreadsheets to databases</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3185f0cc-6aff-40e5-a3c7-c439cb249e03">From indices to primary key</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#099224a6-ef40-4594-b872-65dbb2069d6e">Supporting JOINs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f750c2fd-2022-48bf-a4ea-e00a400cc7d2">Acknowledgements and Contacts</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#081235da-9dbe-4119-9cc9-40b4b3cf009b">Appendix</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#256a6e99-f2fa-49b3-bbf8-7c8a6552f7d5">Breakdown of Proof Size</a></div></nav><p id="9fe8de82-d552-4261-b645-01402ca151cc" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="931fd4dd-c19a-44e4-a546-2fd8a1254e46"><div style="font-size:1.5em"><span class="icon">🏰</span></div><div style="width:100%"><strong>Meta:<br/><br/></strong>I originally wrote this post while working at Protocol Labs in the cryptonet team. I have since left cryptonet and Protocol Labs. Since it is not unclear for how long <a href="https://cryptonet.org/blog/tavloid-towards-simple-verifiable-spreadsheets-and-databases">that post</a> will be online, I’m reposting it here on <a href="http://binarywhales.com">binarywhales.com</a>. The overwhelming majority of the post is the same as the original.</div></figure><p id="8a18860b-721f-41d1-a358-21fc51694ace" class="">
+</p><p id="9153de25-a0d4-42b6-85ee-e6c062ca5fd4" class="">This post presents some ideas we have been working on at <a href="http://cryptnet.org">cryptonet</a> to obtain <em><em><em><em><em>simple </em></em></em></em></em>verifiable databases.  </p><p id="2d38eb21-de41-4bfd-bfc1-11c3b34e244a" class="">If you need more context on the setting, please see <a href="https://cryptonet.org/projects/verifiable-data-queries-for-web3">this page</a>. As a refresher on the setting though: </p><ul id="eace816c-961f-418c-960b-c7ce96c4d3e5" class="bulleted-list"><li style="list-style-type:disc">assume there is a public short commitment to a spreadsheet or a large database; </li></ul><ul id="a12820f1-0769-4c45-afd6-83c41759a42a" class="bulleted-list"><li style="list-style-type:disc">we want to support queries on these data so that it is fast to <em>cryptographically </em>guarantee that the query response was correct given a short certificate for the query. </li></ul><p id="4bda37db-8b51-44a2-b290-5eb0dc7c610b" class="">We generically refer to this setting as <em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em><em>verifiable tables.</em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></em></p><hr id="09eae027-c86e-461f-910a-2f48242fa784"/><h1 id="a698ed8a-04c1-4c65-acf0-d830d0c664cc" class="">What’s Tavloid?</h1><p id="ba188c1c-febe-4c53-8454-b640dfa4e36d" class=""><em>Tavloid </em>is a simple approach to verifiable tables that mainly strives for:</p><ul id="1eda6ce0-e8e6-4ce0-98d9-a6606e4efa59" class="bulleted-list"><li style="list-style-type:disc"><strong>Concrete efficiency</strong></li></ul><ul id="c1789089-6a95-4610-a103-26d3706bd3fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Simplicity</strong>: based on few basic components, easy to understand as possible, fast to implement. </li></ul><p id="405166f4-bb82-4a00-9c0e-2a88c16c62f0" class="">There is a vast literature on the problem, but much of it focuses on asymptotic behavior using sophisticated (but complex) data structures; often it does not achieve the practical efficiency (especially in proof size) we may hope for.</p><p id="f5acaa8a-6acb-4ca8-8403-93a7f07bf927" class="">
+</p><p id="f435c371-ab89-49c8-9f2e-2d408c7fb208" class="">In addition to being efficient and simple, Tavloid aims at:</p><ul id="b96d26e8-bf0f-4bf6-a5f9-2d5bd8e83caa" class="bulleted-list"><li style="list-style-type:disc"><strong>Being</strong> “<strong>SNARK later”</strong> (rather than “SNARK first”): general-purpose SNARKs a sledgehammer-type solution to the problem. Tavloid strives for more targeted solutions and that do not require compiling to a special representation, such as a circuit.</li></ul><ul id="005f0407-337f-4ce2-ad72-ee166f5535f3" class="bulleted-list"><li style="list-style-type:disc"><strong>Being extensible</strong>: while what we describe here supports a very basic application setting, it is possible to make it more powerful without sacrificing modularity. For this reason Tavloid strives for the use of algebraically-flavored commitments (think: KZG-ish yes; Merkle-tree-ish no) which can connect easily with other proof systems (not necessarily general-purpose).</li></ul><h1 id="333f3554-6f0c-4903-972c-ac858a0ea917" class="">What it can do: queries and efficiency</h1><p id="9b0042c5-3dbb-4958-a0ef-4b555b115cb2" class=""><strong>What it supports: </strong>Tavloid supports simple SELECT and (inner) JOIN queries in databases. It is especially suited for SELECT queries for membership of categorical data or testing for small ranges. JOINs in Tavloid are also efficient on categorical data. (What do I mean by “categorical”?See below for an example, but in general I will refer to “categorical queries” as “queries on categorical data” and by “categorical data” I will mean data whose attributes are something like enumerations in some programming languages)</p><p id="3ae98e43-d8f0-4793-b7c8-db7b41a94281" class="">Some <strong>efficiency features</strong> are:</p><ul id="512fdb1a-e11f-43c2-ab5f-832a0210fb67" class="bulleted-list"><li style="list-style-type:disc">constant-size commitments to a database (32 bytes).</li></ul><ul id="d26f3f3e-b3fe-4234-9622-b9fa95de8a1b" class="bulleted-list"><li style="list-style-type:disc">proof sizes independent of table size or the number of rows in the query response. Proof size grows linearly in <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span>, which depends on the categorical membership query (in the example below <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">m=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span></span><span>﻿</span></span> because we are checking 3 categories, the countries)</li></ul><ul id="e0c4b95a-66dd-44bb-8566-9428cc283e02" class="bulleted-list"><li style="list-style-type:disc">verification consisting of roughly a linear number of group operations in the response size and a number of pairings that is linear in <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span>.</li></ul><p id="28b6fedd-9d62-4f7f-99d1-4cd91ddcd913" class="">As an <strong>example </strong>query and its costs consider:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1904bdab-5dee-47aa-b1e9-e375502195af" class="code"><code class="language-SQL">/* Users from countries in Fenno-Scandinavia (as an example of &quot;categorical membership&quot;)*/
+SELECT * FROM Users WHERE Country in (&quot;SE&quot;, &quot;NO&quot;, &quot;FI&quot;)</code></pre><p id="f01807ed-aca4-42a3-8bb4-e9535ff85ca1" class="">Let us assume a response with <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>10000</mn></mrow><annotation encoding="application/x-tex">\approx 10000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10000</span></span></span></span></span><span>﻿</span></span> rows and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">\approx 10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span></span><span>﻿</span></span> columns, then: </p><ul id="de2401fd-f461-4bd5-b18e-1f69b9a2c6b8" class="bulleted-list"><li style="list-style-type:disc">a proof for the query would be <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">\approx 25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">25</span></span></span></span></span><span>﻿</span></span> group elements in a pairing setting (of which 3 in <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">G_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>), slightly less than 1.5 kilobyte. See bottom of post for a breakdown.</li></ul><ul id="6b55e387-f230-4475-ae01-a9754bd9e308" class="bulleted-list"><li style="list-style-type:disc">verification time would be in the ballpark of (less than) 100ms.</li></ul><p id="f4a79a53-d76f-48a7-ab50-cde8f42823b5" class="">Tavloid can be adapted to support different tradeoffs in commitment size, verification time and proof size. For instance, the proof size above can be cut by at one half if traded for a larger commitment.</p><p id="0edf62c3-1ed9-4bb6-9e16-cde50d07e9cc" class="">These ideas easily support spreadsheets (i.e., a setting without JOINs) as a special case. It currently supports databases that are static or whose updates are performed <em>publicly</em>, i.e., all users need to update the commitment to the database when that occurs, or such update need to be proved. One of our current goals is to optimize more types of updates (notice that updates such as adding a whole column (set of columns) are already supported easily since they mostly consist of adding one more commitment).</p><h2 id="8cdefee5-fcbc-4da0-82ef-db6f28e54dc8" class="">What’s next</h2><p id="7ee15119-b5fd-41d9-8d7b-ee6f6fabf2a9" class="">For now Tavloid mostly supports <em>filtering</em> operations of sort (SELECTs and JOINs), and of a specific type. Other things we are looking at: </p><ul id="2bc7b816-1c41-4416-9ecb-3946178e30a9" class="bulleted-list"><li style="list-style-type:disc">other filtering criteria, e.g. range queries based on linear combinations of data.</li></ul><ul id="3af97acd-8427-4dfe-be8b-183feca61d7a" class="bulleted-list"><li style="list-style-type:disc">Aggregating/mapping/reducing data, i.e. producing a (potentially compact) results from operations on the data. (<strong>NB: </strong>some simple aggregation such as SUMs are already easily supported.)</li></ul><h2 id="88c65fc7-b3be-4473-8cad-c568df981bd0" class="">Is there anything novel here?</h2><p id="a4e418b5-51dc-4e26-bac3-d69ba7c7a854" class="">A fair amount of our work got inspired by / independently rediscovered / borrowed from approaches and constructions out there, in particular these two papers (<a href="https://www.cs.yale.edu/homes/cpap/published/IntegriDB.pdf">here</a> and <a href="https://eprint.iacr.org/2010/455.pdf">here</a>).  Reverse-lookup commitments have been used before in some form or the other; applying some type of commitment to “columns as vectors”, mostly Merkle trees, is folklore.</p><p id="0f69b456-0d19-40ac-8136-00432c214461" class="">What we think is new or promising: </p><ul id="b39b2ed0-f78e-4ef5-a20b-8595bdca54a7" class="bulleted-list"><li style="list-style-type:disc">Our stress on <em>simplicity: </em>our cryptographic primitives are as plain as possible and so are the underlying data structures—e.g. we do not need to keep any special tree structure balanced; we just use vectors and sets.</li></ul><ul id="8ac8a69d-1dfd-41ca-b5fa-da2bda53092d" class="bulleted-list"><li style="list-style-type:disc">We purposefully use very modern forms of vector commitments which:<ul id="ad4917c1-1dbf-432c-964c-4dadbd2b33a2" class="bulleted-list"><li style="list-style-type:circle">have aggregation and subvector opening. These features do the heavy lifting of reducing proof size—and they do it <em>simply</em>.</li></ul><ul id="5b251d90-f2de-4bce-bc77-a5179dbe4653" class="bulleted-list"><li style="list-style-type:circle">can be easily <em>linked </em>with SNARKs for future extensions (see, e.g., the perspective in <a href="https://eprint.iacr.org/2019/142">Legosnark </a>and <a href="https://eprint.iacr.org/2022/621">Caulk</a>).</li></ul><ul id="2d5ea00b-6cae-4f68-bd1d-de6f914486c3" class="bulleted-list"><li style="list-style-type:circle">are <em>homomorphic</em>.<em><em><em><em><em><em> </em></em></em></em></em></em>We are currently working on a few gadgets for proving properties on columns that exploit this property. </li></ul></li></ul><ul id="390bc64f-5f8b-4882-aa51-2a35faf66fec" class="bulleted-list"><li style="list-style-type:disc">We exploit specific properties of our setting, which allows for example not to make black box use of the union capabilities of accumulators in literature.</li></ul><hr id="04fcf5b1-32fe-44a6-a1d9-1e4b236c0530"/><h1 id="5bef4660-5778-412d-bc16-51b8fceb33ed" class="">How it works in a nutshell</h1><p id="28dde8de-b0fa-4846-83ed-23609c59b980" class="">The main idea behind Tavloid is roughly to:</p><ul id="5305a791-94a5-4a24-9ac3-b6e21bcfa58e" class="bulleted-list"><li style="list-style-type:disc">process each column of data tables by two authenticated data structures (see below)</li></ul><ul id="5cbcc000-9950-4252-8611-9be555863086" class="bulleted-list"><li style="list-style-type:disc">using and combining the openings of these authenticated data structures to show the filter that happens in WHERE and ON clauses (in SELECTs and JOINs respectively).</li></ul><p id="a915ff64-7c3d-40aa-a0ac-d21495d2cac7" class="">Combining the openings is quite simple for SELECTs and a little bit more complicated for JOINs. In this post we try and give the bulk of the intuition. We stress that we assume that the <em>processing</em> stage is performed honestly.</p><p id="7e6819bd-2490-4cab-bc48-b6160e8592c5" class="">The two authenticated data structures we use are:</p><ol type="1" id="52081306-37ea-4eef-8496-c787f6464084" class="numbered-list" start="1"><li>the, by now standard, <strong>vector commitments</strong> (with subvector openings and aggregation properties). Intuitively, we use these to verify <em>whether claimed values in the response are really in the claimed rows/indices.</em></li></ol><ol type="1" id="6d27761f-cad7-483a-ac8d-5980ce48dd5b" class="numbered-list" start="2"><li>another authenticated data structure, less standard, which we call “<strong>reverse lookup commitment</strong><em>”. </em>You can think of it as a cousin of vector commitments that is <em>i)</em> more key-value flavored, and <em>ii) </em>where the “value” part is a (compressed) set. Intuitively, we use these to prove<em> </em>whether the claimed rows/indices are the ones we should really be looking at.</li></ol><p id="0379ad92-d977-4f95-bd4a-69a8d34f722f" class="">In our figures we depict these two primitives through the following:</p><figure id="785a25aa-9d8e-49d7-867b-a00790188110" class="image"><a href="Tavloid%20towards%20Simple%20Verifiable%20Spreadsheets%20and%20b374a8fc2d31459fa0c2b982a0aea9c2/Untitled.png"><img style="width:480px" src="Tavloid%20towards%20Simple%20Verifiable%20Spreadsheets%20and%20b374a8fc2d31459fa0c2b982a0aea9c2/Untitled.png"/></a><figcaption>Fig 1: Two basic building blocks in Tavloid: vector commitments and reverse lookup commitments</figcaption></figure><p id="93cb13a9-d3e1-47fb-ae99-0d8bbe24094f" class="">
+</p><p id="791837de-b3cd-490a-9f66-8c24b22fb372" class="">We now go in a little bit more detail considering spreadsheets as a simpler setting to illustrate our construction. </p><h1 id="72c3502f-dda9-42fa-89f6-9ddb6dd596b2" class="">Warm-up: A solution for spreadsheets</h1><p id="82637880-786b-466a-b110-2a81bec5fe7e" class="">Let us first consider a spreadsheet—which we can think of as a collection of (parallel) columns—and the task of queries that just filter data. Although we talk about spreadsheets we will use the language of SQL queries not to introduce other notations.</p><h2 id="09a7ae2f-5325-447a-aff0-e5500654013a" class="">Breaking down a query response</h2><p id="1fc9488d-75d9-4a9b-9978-9516e75a72aa" class="">Here we consider queries of the type “SELECT <em>columns</em> WHERE <em>criteria_on_columns”. </em>Look at the “Fennoscandian countries” example from before. A response to it will be a subset of rows with the respective column values. Once received a response, we can break down what a client should verify int two sub-questions:</p><ol type="1" id="cbf885ab-9da7-4bc1-b0d5-e7463876ffcb" class="numbered-list" start="1"><li>Are the row indices the ones for the requested criteria? (in this case, rows referring to countries in the Fennoscandian peninsula—Finland, Sweden, Norway)</li></ol><ol type="1" id="45239d5c-4346-41eb-9126-3e8f6a5dc84b" class="numbered-list" start="2"><li>Are all the values from those specific rows the actually <em>from</em> the committed spreadsheet?</li></ol><p id="ff45813a-a2fe-4c55-a696-a8c6f5b2754c" class="">To connect these sub-questions to the authenticated data structures above: vector commitments take care of question (2); reverse lookup commitments take care of question (1).</p><h2 id="84d1c103-35d5-44ef-979e-112a642ee54a" class="">Vector commitments: from row indices to values</h2><p id="3deea596-4b51-4b1d-8ddc-50dc02095a70" class="">Given a set of row indices we are claiming in our response, it is easy to prove values in vector commitments. What we do is straightforwardly committing to each column:</p><p id="14e2b2ab-90c0-4b3a-9e01-43491c4714a1" class="">
+</p><figure id="015a2b00-4021-40a1-8f23-779177bc83e2" class="image"><a href="Tavloid%20towards%20Simple%20Verifiable%20Spreadsheets%20and%20b374a8fc2d31459fa0c2b982a0aea9c2/Untitled%201.png"><img style="width:528px" src="Tavloid%20towards%20Simple%20Verifiable%20Spreadsheets%20and%20b374a8fc2d31459fa0c2b982a0aea9c2/Untitled%201.png"/></a><figcaption><strong>Fig 2: </strong>columns to vector commitments</figcaption></figure><p id="21393e87-0c7a-44e3-9b7b-e54f9d70c3f5" class="">We can instantiate vector commitment in several ways in order to obtain our required properties, for example through the constructions in <a href="https://eprint.iacr.org/2020/419">Pointproofs</a> or the <a href="https://eprint.iacr.org/2022/705">Muppets paper</a>.</p><p id="19c32f72-a598-49eb-84ac-6a06e967117a" class="">But why aren’t vector commitments enough? For example because a server could give us all the correct row values, but not for <em>all </em>Fenno-Scandianavian countries. We need to do more.</p><h2 id="4213d924-0809-4768-8f03-1c47f6d02188" class="">Reverse lookup commitments: from value criteria to rows</h2><p id="dbd2bd5d-f156-4cd4-bf5e-386908952284" class="">How can the client obtain the guarantee it is seeing <em>all</em> the rows referring to Fennoscandian countries? We use an authenticated data structure for key-value maps that specifically:</p><ul id="e6c323ba-f4fc-4fd3-a057-c3413b36e2ba" class="bulleted-list"><li style="list-style-type:disc">takes as input a possible column value as key (e.g., “NO”)</li></ul><ul id="9f0454dd-9865-4374-a908-c4d704ef928c" class="bulleted-list"><li style="list-style-type:disc">returns a certificate for a set of rows—the value the key maps to—containing that particular column value (e.g., all the row indices with “NO” as country)</li></ul><p id="1a6e0529-63f6-4760-9a18-c31d88ad02bf" class="">We call such a structure a “reverse lookup” commitment since it performs a lookup from values to (sets of) indices.</p><h3 id="63a593bb-1bc7-444b-b29c-47113ff032d8" class="">But not quite efficient yet—two more challenges to solve</h3><p id="93712800-0eee-4e1e-b259-c35401653dd9" class="">The primitive described above is not exactly what we need yet since we still need to solve two problems.</p><p id="7f36def6-7c56-45e8-8454-6f509bca3d5d" class="">One problem is (at the very high level): if we certify a “set of rows”, this set may be something too large to handle for commitment/verification. We should then use a compressed version of sets, this could be a hash or an accumulator.</p><p id="7b0f765b-edec-4e34-8b8c-3fcb88f2eb0e" class="">A second challenge is that we want to deal not only with single values but with multiple criteria/selections at the same time (e.g., we want to select not only for one country but for multiple ones at the same time). In order to support this, we compress the set through specific accumulators that also support small certificates for <em>set</em> <em>union</em> <em>queries.</em> In the example above, the union will be “the rows belong to all of the Fennoscandian countries”. Notice that for categorical queries, this proof will turn out to be empty because we are dealing with <em>disjoint union (</em>see also details below)</p><p id="fb886aa2-3dcc-4f19-ab8e-a58ada3dd6f3" class="">Below is a drawing showing an example of how to commit to a column (in this case the column “Countries”) into a reverse lookup commitment.</p><figure id="b3d62da3-480e-4efd-97ea-5a52451503dd" class="image"><a href="Tavloid%20towards%20Simple%20Verifiable%20Spreadsheets%20and%20b374a8fc2d31459fa0c2b982a0aea9c2/Untitled%202.png"><img style="width:768px" src="Tavloid%20towards%20Simple%20Verifiable%20Spreadsheets%20and%20b374a8fc2d31459fa0c2b982a0aea9c2/Untitled%202.png"/></a><figcaption><strong>Fig 3: </strong>columns to reverse lookup commitment</figcaption></figure><p id="0022b81d-a594-4791-8ed5-7a24f2a03d84" class=""><strong>But how do we instantiate this primitive?</strong> We obtain it by modifying existing techniques. In order to obtain the “outer” key-value commitment, we can use any vector commitment and use a hash function (or some other predetermined mapping) to go from values to indices supported by the vector commitment. In order to accumulate the set into something that supports disjoint unions (and, later, also intersections), we can use techniques based on bilinear maps. We can for example use the KZG polynomial commitment on the characteristic polynomial of the set as shown in <a href="https://eprint.iacr.org/2010/455.pdf">Papamanthou et al.</a> To verify a disjoint union we can specialize the techniques from <a href="https://eprint.iacr.org/2013/724.pdf">this paper</a> to the case of disjoint union. This involves providing incremental products in the group (plus more) and checking these products on pairings.</p><p id="fb20ad9c-2cb1-4cc2-8328-c98459d16c8d" class=""><strong>NB:</strong> There are several natural optimizations that we do apply but that we do not discuss in this introductory post. This is just a very high-altitude view of the protocol. An example of such optimizations is: compressing all authenticated data structures into one single (vector) commitment to save on parameters’ size.</p><h2 id="270e2751-6bc7-44a5-9a87-19d80faaedd8" class="">Putting it all together</h2><p id="1d13946c-9f53-4188-87c1-e6d4d9a7e4e7" class="">So, more explicitly, how does a client verify a response? A general template using the language of our example follows. We’ll fix the inefficiency by using aggregation properties </p><ul id="4f3cb3d6-7273-4dad-8b01-b3a7ab218860" class="bulleted-list"><li style="list-style-type:disc">it receives a set of rows and related values (the response)</li></ul><ul id="cd89b84c-3ca0-4563-989f-08da8400d43c" class="bulleted-list"><li style="list-style-type:disc">it receives a vector commitment opening for each of the columns. These openings refer to a set of rows R. These can be verified straightforwardly as usual. </li></ul><ul id="37058b30-8fa2-4374-8b08-e1da1e7f1d49" class="bulleted-list"><li style="list-style-type:disc">it receives a reverse lookup proof for each country value and the related compressed accumulator.<ul id="765fcbf5-64b3-4a1b-83ce-61a1a78b8fee" class="bulleted-list"><li style="list-style-type:circle">To verify the reverse lookup proofs, the client checks:<ul id="8c4656ef-2d18-4b5d-aa48-294b6577b9f0" class="bulleted-list"><li style="list-style-type:square"><em>reverse lookups</em>: it checks each of the reverse lookup proof for each of the accumulators</li></ul><ul id="8101a7ca-c3e3-4b55-8b53-f993ad30c9b3" class="bulleted-list"><li style="list-style-type:square"><em>their</em> <em>intersection</em>: it produces a compressed set for the set of rows R and it checks that this consists of the union of the other accumulators.</li></ul></li></ul></li></ul><p id="647297d0-3887-4197-b8b0-cd61f2731639" class="">To make the template above efficient we rely on aggregation and subvector properties of the vector commitments so that the client can receive a single proof (this is also true for the proofs in the reverse lookup commitment).</p><h1 id="480e278f-38df-4198-b25e-aa102f209e5e" class="">From spreadsheets to databases</h1><p id="4a65f1e9-8767-4eb4-a782-febdc3d132a2" class="">The solution described so far is the bulk of our scheme for databases. If in a spreadsheet we apply the procedures in Figures 2 and 3 <em>per column</em>, in a database we will apply it <em>to each column in every table</em>. To further adapt our scheme, though, we need to replace row indices and show how to deal with (inner) JOINs.</p><h2 id="3185f0cc-6aff-40e5-a3c7-c439cb249e03" class="">From indices to primary key</h2><p id="0d17654d-bf2b-4ab1-a5dd-fd6dbca31c90" class="">As a first step to adapt our solution to the database setting we replace the sets of rows in the reverse lookup commitments. Instead of indices, we will use primary keys from the related table.</p><h2 id="099224a6-ef40-4594-b872-65dbb2069d6e" class="">Supporting JOINs</h2><p id="39021b3c-e5af-4a98-8fe5-9ae390cc9625" class="">Our solution already contains the main ingredients to support efficient JOINs. What we need to rely as extra is intersection proof features of the accumulated sets in the reverse lookup commitments. For example, let us look at this query:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/>
+<pre id="a8c4dc01-3313-49a1-a9b2-e9a798d54f37" class="code"><code class="language-SQL">/* All posts from filtered users */
+SELECT * FROM Users JOIN Posts
+ ON Users.id = Posts.uid
+ WHERE Users.Country in (&quot;SE&quot;, &quot;FI&quot;, &quot;NO&quot;)</code></pre>
+ <p id="adb66639-4fc8-4e0e-bad8-8ca12f59431a" class="">In order to handle the above we let the server provide two accumulated sets of rows: one corresponding to the rows in the Posts table (all rows), another corresponding to the filtered-by-country rows in the Country table. In addition to those, it provides an intersection proof for the two showing that results in the right final set of rows. This increases communication by a constant number of group elements.</p><p id="7af9dbfc-3eb4-40c0-ac8e-2f65b4b84591" class="">
+</p><hr id="9d6f6ccf-4607-4ca3-99fc-bc982863f19c"/><h2 id="f750c2fd-2022-48bf-a4ea-e00a400cc7d2" class="">Acknowledgements and Contacts</h2><p id="1aa1584c-0bf3-4214-b4f3-bffe9fe075c7" class=""><em>Thanks to Nicola Greco, Anca Nitulescu, Nicolas Gally (who were at cryptonet at the time this post was written) and Mahak Pancholi (Aarhus University) for helpful discussions on these constructions. </em></p><p id="998f6a2f-e535-46e9-9e76-9ea81cb23fd0" class=""><em>For any questions or comments: </em><a href="mailto:matteo@matterlabs.dev"><span style="border-bottom:0.05em solid">matteo@matterlabs.dev</span></a></p><hr id="a9086cd0-082d-43be-aea2-4bd2096bd2b0"/><h1 id="081235da-9dbe-4119-9cc9-40b4b3cf009b" class="">Appendix</h1><h2 id="256a6e99-f2fa-49b3-bbf8-7c8a6552f7d5" class="">Breakdown of Proof Size</h2><p id="4f9f796f-b62b-447a-8b53-79af48775522" class="">This is a special case and can be generalized: it assumes one multicategorical on <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span> categories WHERE and one JOIN.</p><p id="91fd8212-66b7-47a3-9ae7-45ae7f031e6b" class="">Below <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">G_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">G_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> are group element sizes of the respective groups in the bilinear setting.</p><p id="a04ad529-2efb-4a4f-b0a5-ff36834a3686" class="">For a SELECT with a single JOIN with a categorical query of size <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span> (see examples):</p><ul id="287e782e-74b1-4edb-a054-e3052d27bc8a" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>C</mi><mi mathvariant="normal">∣</mi><mo>⋅</mo><msub><mi>G</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">|C| \cdot G_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>  // column vector commitments, one per column</li></ul><ul id="8b295fd0-9cc3-4878-8d8c-a82a6c9cf285" class="bulleted-list"><li style="list-style-type:disc"> <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⋅</mo><msub><mi>G</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">1\cdot G_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> // reverse lookup commitment (in this case it is for one column only)</li></ul><ul id="3994b38b-6651-4321-ba55-5473c40730dd" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>⋅</mo><msub><mi>G</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">m \cdot G_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> // values (compressed sets) in reverse lookups</li></ul><ul id="1ba432f7-8b52-49d6-9b30-9e0bfd287499" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>⋅</mo><mo stretchy="false">(</mo><msub><mi>G</mi><mn>1</mn></msub><mo>+</mo><msub><mi>G</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(m-1) \cdot (G_1+G_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> // proofs for disjoint union</li></ul><ul id="0660fd8c-5ea1-4bbb-ad2f-6ea2f9aa24d7" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⋅</mo><mo stretchy="false">(</mo><msub><mi>G</mi><mn>1</mn></msub><mo>+</mo><msub><mi>G</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1 \cdot (G_1+G_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> // intersection proof for JOIN</li></ul><ul id="dc9d4197-6644-4145-b206-e69eb5cc8f0c" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⋅</mo><msub><mi>G</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">1 \cdot G_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> // Single aggregated vector commitment proof</li></ul><p id="94b4cea5-55ea-4b05-8722-7d6b2eefb38c" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+
