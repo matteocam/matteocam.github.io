@@ -56,13 +56,18 @@ _In some of my latest projects I worked on questions as:_
 ### Rationality and Fine-Grained Cryptography
 - Is expressive, efficient "higher" crypto (e.g. MPC, FHE, VC) possible *without cryptographic assumptions* (at the cost of being secure against "weaker" adversaries)? [[paper]](https://eprint.iacr.org/2018/297)
 - How to design protocols  for verifiable computation when a server is *economically incentivized* (and with no cryptographic assumptions)? [[thesis]](https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=3823&context=gc_etds) [[Sequential composability paper]](assets/misc/Sequentially Composable Rational Proofs.pdf) [[Space bounded computation paper]](assets/misc/Efficient Rational Proofs for Space Bounded Computation - Official.pdf)
+- How to make verifiable computation based on rational assumptions as efficient as modern SNARKs? And how to define "extractability" in the rational setting? [[paper]](https://eprint.iacr.org/2023/1966.pdf)
 
 ## ZK Standards
 ---
-
+### Commit-and-Prove
 I was co-chair of the working group leading the effort to standardize [(commit/encrypt)-and-prove](https://hackmd.io/@dariofiore/rkXo8EBp8) in zero-knowledge proofs. Some resources:
 - A [proposal](assets/misc/zkproof-cp-standards-4th.pdf) for the standardization of the notion of _commit-and-prove_ (as well as _encrypt-and-prove_) accepted at the [4th ZKProof Workshop](https://zkproof.org).
 - [Slides](assets/misc/CP-standard-ZKProof-slides.pdf) on commit-and-prove used at the [2nd ZKProof Workshop](https://zkproof.org/workshop2/main.html). 
+
+### Comparing ZKPs
+- A [proposal](assets/misc/zkproof24.pdf) for approaching the comparison of ZKPs accepted at the [6th ZKProof Workshop](https://zkproof.org).
+
 
 ## Teaching 
 ---
@@ -84,4 +89,4 @@ I was co-chair of the working group leading the effort to standardize [(commit/e
 ## Software
 ---
 - SNARK libraries: [LegoSNARK](https://github.com/imdea-software/legosnark) and [Lunar](https://github.com/imdea-software/lunar)
-- [citerus](https://github.com/matteocam/citerus), a tool to help retrieve cryptographic citations when writing papers in LaTeX.
+- [citerus](https://github.com/matteocam/citerus), a tool to help retrieving cryptographic citations when writing papers in LaTeX.
