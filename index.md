@@ -76,8 +76,15 @@ I was co-chair of the working group leading the effort to standardize [(commit/e
 - [Seminar @ Hanyang University, Seoul: Techniques for Efficient Non-Interactive Probabilist Proofs (February '20)](https://drive.google.com/file/d/1zIldgk2tWdyck_qF4W_2eTf27Lal_wZ_/view?usp=sharing) [[some of the  material]](https://drive.google.com/drive/folders/1lCSlrB8bFTXGfXUc4DizR6AscLgFg4jL?usp=sharing)
 - [Discrete Mathematical Structures](https://www.ccny.cuny.edu/compsci/cs104_description) @ The City College of New York (Spring 2016)
 
+## Students I Officially Supervised
+---
+
+- Agni Datta (current), M.Sc. Student @ Vellore Institute of Technology
+- [Hamidreza Khoshakhlagh](https://hamiidreza.github.io/), PhD Student @ Aarhus University (graduated in 2022)
+
 ## Program Committees
 ---
+- Eurocrypt 2025
 - CCS 2024
 - Asiacrypt 2023
 - CCS 2023
