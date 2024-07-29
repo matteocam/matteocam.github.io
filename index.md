@@ -79,8 +79,9 @@ I was co-chair of the working group leading the effort to standardize [(commit/e
 ## Students I Officially Supervised
 ---
 
-- Agni Datta (current), M.Sc. Student @ Vellore Institute of Technology
+- [Agni Datta (current)](https://sites.google.com/view/agni-datta/), M.Sc. Student @ Vellore Institute of Technology
 - [Hamidreza Khoshakhlagh](https://hamiidreza.github.io/), PhD Student @ Aarhus University (graduated in 2022)
+- [Luigi Russo](https://lrusso96.github.io/), PhD Student @ Sorbonne & EURECOM (supervised during Luigi's internship at Matter Labs in Summer '24)
 
 ## Program Committees
 ---
